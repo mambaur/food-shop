@@ -1,23 +1,27 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class U_tentang extends CI_Controller {
+class Contact extends CI_Controller {
 	function __construct(){
 		parent::__construct();		
 		$this->load->model('M_contact');
 		$this->load->helper(array('url'));
-		if($this->session->userdata('status') == "login"){
-			redirect('Welcome','refresh');
+		if($this->session->userdata('status') != "login"){
+			echo "<script>
+                alert('Anda harus login terlebih dahulu');
+                window.location.href = '".base_url('login')."';
+            </script>";//Url tujuan
 		}
 	}
 
 	public function index(){
-		$this->load->view('U_contact');
-		$this->load->view('element/Footer');
+		$this->load->view('element/header');
+		$this->load->view('user/user-contact');
+		$this->load->view('element/footer');
 	}
 	public function tambah_contact(){
-		$nama=$this->input->post('nama');
-		$email=$this->input->post('email');
+		$nama=$this->session->userdata("namauser");;
+		$email=$this->session->userdata("email");;
 		$judul=$this->input->post('judul');
 		$pesan=$this->input->post('pesan');
 		$tgl=date('Y-m-d');
@@ -26,14 +30,15 @@ class U_tentang extends CI_Controller {
 		if ($cek >= 1){
 			echo "<script>
                 alert('Pesan telah terkirim');
-                window.location.href = '".base_url('U_tentang')."';
+                window.location.href = '".base_url('Contact')."';
             </script>";//Url tujuan
 		}elseif ($cek == 0) {
 			echo "<script>
-                alert('Pesan gagal terkirim');
-                window.location.href = '".base_url('U_tentang')."';
+                alert('pesan gagal terkirim');
+                window.location.href = '".base_url('Contact')."';
             </script>";//Url tujuan
 		}
+		redirect('Contact');
 	}
 }
 ?>

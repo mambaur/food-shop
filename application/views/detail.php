@@ -148,7 +148,7 @@
                           						echo $format_indonesia; ?> </span>
 									<label>Jumlah:</label>
 									<input type="text" value="1" />
-									<a href="<?php echo base_url('Keranjang/insert1/'.$a->id_produk.'/'.$a->harga); ?>">
+									<a href="<?php echo base_url('user/keranjang/insert?id='.$a->id_produk.'&harga='.$a->harga); ?>">
 									<button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Beli

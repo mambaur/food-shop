@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Bukti extends CI_Controller{
+class Pembayaran extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('M_bukti');
@@ -9,16 +9,16 @@ class Bukti extends CI_Controller{
 		if($this->session->userdata('status') != "login"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
-                window.location.href = '".base_url('Login')."';
+                window.location.href = '".base_url('login')."';
             </script>";//Url tujuan
 		}
 	} 
 
 	function index(){
 		$data['gambar'] = $this->M_bukti->tampil_gambar();
-		$this->load->view('element/Header');
-		$this->load->view('V_buktibayar',$data);
-		$this->load->view('element/Footer');
+		$this->load->view('element/header');
+		$this->load->view('user/user-pembayaran',$data);
+		$this->load->view('element/footer');
 	}
 
 	function upload_image(){
@@ -51,14 +51,14 @@ class Bukti extends CI_Controller{
 				$this->M_bukti->simpan_upload($id,$nama_pemilik,$bank,$gambar,$kode);
 				echo "<script>
 	                alert('Upload berhasil');
-	                window.location.href = '".base_url('Bukti')."';
+	                window.location.href = '".base_url('user/user-pembayaran')."';
 	            </script>";//Url tujuan
 			}
 	                 
 	    }else{
 			echo "<script>
 	                alert('Upload gagal');
-	                window.location.href = '".base_url('Bukti')."';
+	                window.location.href = '".base_url('user/user-pembayaran')."';
 	            </script>";//Url tujuan
 		}
 				

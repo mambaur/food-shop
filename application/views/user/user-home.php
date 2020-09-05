@@ -1,5 +1,5 @@
-
-	<section id="slider"><!--slider-->
+	<!--slider-->
+	<!-- <section id="slider">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
@@ -62,22 +62,23 @@
 				</div>
 			</div>
 		</div>
-	</section><!--/slider-->
+	</section> -->
+	<!--/slider-->
 	
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Kategori</h2>
+						<!-- <h2>Kategori</h2> -->
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default">
 								<div class="panel-heading">
-										<?php foreach($data as $u){?>
+										<?php foreach($data as $item){?>
 											<div class="panel panel-default">
 												<div class="panel-heading">
 													<h4 class="panel-title">
-														<a href="<?php echo base_url('Welcome/katproduk/'.$u->id_kategori); ?>"><?php echo $u->nama_kategori ; ?></a>
+														<a href="<?= base_url('user/home/kategori?id='.$item->id_kategori); ?>"><?= $item->nama_kategori ; ?></a>
 													</h4>
 												</div>
 											</div>
@@ -94,7 +95,7 @@
 				
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Produk</h2>
+						<!-- <h2 class="title text-center">Produk</h2> -->
 						<?php foreach($produk as $a){ ?>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
@@ -104,7 +105,7 @@
 											<h2>Rp <?php $format_indonesia = number_format ($a->harga, 0, ',', '.');
                           						echo $format_indonesia; ?> </h2>
 											<p><?php echo $a->nama_produk ; ?></p>
-											<a href="<?php echo base_url('Welcome/detail/'.$a->id_produk); ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Tambah ke keranjang</a>
+											<a href="<?php echo base_url('user/home/detail?id='.$a->id_produk); ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Tambah ke keranjang</a>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
@@ -112,7 +113,7 @@
                           						echo $format_indonesia; ?> </h2>
 												<p><?php echo $a->nama_produk ; ?></p>
 												<p><i class="fa fa-check-square"></i> Stok : <?php echo $a->stok; ?></p>
-												<a href="<?php echo base_url('Welcome/detail/'.$a->id_produk); ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Tambah ke keranjang</a>
+												<a href="<?php echo base_url('user/home/detail?id='.$a->id_produk); ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Tambah ke keranjang</a>
 											</div>
 										</div>
 								</div>

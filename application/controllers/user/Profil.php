@@ -9,7 +9,7 @@ class Profil extends CI_Controller {
 		if($this->session->userdata('status') != "login"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
-                window.location.href = '".base_url('Login')."';
+                window.location.href = '".base_url('login')."';
             </script>";//Url tujuan
 		}
  
@@ -17,9 +17,9 @@ class Profil extends CI_Controller {
 	public function index(){
 		$iduser = $this->session->userdata("iduser");
 		$data['user'] = $this->M_profil->user($iduser);
-		$this->load->view('element/Header');
-		$this->load->view('V_profil',$data);
-		$this->load->view('element/Footer');
+		$this->load->view('element/header');
+		$this->load->view('user/user-profil',$data);
+		$this->load->view('element/footer');
 	}
 	public function updateuser(){
 		$iduser = $this->session->userdata("iduser");
@@ -33,7 +33,7 @@ class Profil extends CI_Controller {
 		$this->M_profil->update_user($iduser,$nama,$email,$pass,$telp,$alamat,$kodepos,$level);
 		echo "<script>
                 alert('Data anda berhasil diperbarui');
-                window.location.href = '".base_url('Profil')."';
+                window.location.href = '".base_url('user/profil')."';
             </script>";//Url tujuan
 	}
 	

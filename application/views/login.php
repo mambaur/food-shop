@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="<?php echo base_url('Beranda'); ?>"><img style="width: 50%;" src="<?php echo base_url('assets/images/home/logo.png'); ?>" alt="" /></a>
+							<a href="<?php echo base_url(); ?>"><img style="width: 50%;" src="<?php echo base_url('assets/images/home/logo.png'); ?>" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right clearfix">
 						</div>
@@ -65,10 +65,10 @@
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="<?php echo base_url('Beranda'); ?>"><i class="fa fa-home"></i>Beranda</a></li>
-								<li><a href="<?php echo base_url('Beranda/About'); ?>"><i class="fa fa-question-circle"></i>Tentang Purnamajati</a></li>
-								<li><a href="<?php echo base_url('U_tentang'); ?>"><i class="fa fa-comments"></i>Hubungi kami!</a></li>
-								<li><a href="<?php echo base_url('Login'); ?>"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="<?php echo base_url(); ?>"><i class="fa fa-home"></i>Beranda</a></li>
+								<li><a href="<?php echo base_url('home/About'); ?>"><i class="fa fa-question-circle"></i>Tentang Purnamajati</a></li>
+								<li><a href="<?php echo base_url('home/contact'); ?>"><i class="fa fa-comments"></i>Hubungi kami!</a></li>
+								<li><a href="<?php echo base_url('login'); ?>"><i class="fa fa-lock"></i> Login</a></li>
 								<li><a href=""><i class="fa fa-sign-in"></i>Daftar</a></li>
 							</ul>
 						</div>
@@ -86,13 +86,13 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form" style="background-color: #F0F0E9;padding: 50px;"><!--login form-->
 						<h2 style="color: orange;"><strong>LOGIN</strong></h2>
-						<form action="<?php echo base_url('Login/aksi_login'); ?>" method="post">
+						<form action="<?php echo base_url('login/autentikasi'); ?>" method="post">
 							<input class="form-control" style="background-color: white;" type="email" placeholder="Email" name="email" required="required" />
 							<input class="form-control" style="background-color: white;" type="password" placeholder="Password" name="password" required="required" />
-							<span>
+							<!-- <span>
 								<input style="background-color: white;" type="checkbox" class="checkbox" required="required"> 
 								Biarkan tetap masuk
-							</span>
+							</span> -->
 							<button type="submit" class="btn btn-default">Masuk</button>
 						</form>
 					</div><!--/login form-->
@@ -103,7 +103,7 @@
 				<div class="col-sm-4 ">
 					<div class="signup-form" style="background-color: #F0F0E9;padding: 50px;"><!--sign up form-->
 						<h2 style="color: orange;"><strong>REGISTER</strong></h2>
-						<form action="<?php echo base_url('Login/daftar'); ?>" method="post">
+						<form action="<?php echo base_url('login/daftar'); ?>" method="post">
 							<input class="form-control" style="background-color: white;" type="text" placeholder="Nama" name="nama" />
 							<input class="form-control" style="background-color: white;" type="email" placeholder="Alamat email" name="email">
 							<input class="form-control" style="background-color: white;" type="number" placeholder="No telp" name="telp">

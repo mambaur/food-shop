@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Home extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();		
@@ -11,8 +11,8 @@ class Welcome extends CI_Controller {
 		if($this->session->userdata('status') != "login"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
-                window.location.href = '".base_url('Login')."';
-            </script>";//Url tujuan
+                window.location.href = '".base_url('login')."';
+            </script>";
 		}
 	}
 
@@ -32,7 +32,7 @@ class Welcome extends CI_Controller {
             // get current page records
             $data["produk"] = $this->M_produk->get_current_page_records($limit_per_page, $page*$limit_per_page);
                  
-            $config['base_url'] = base_url() . 'Welcome/index';
+            $config['base_url'] = base_url() . 'user/home/index';
             $config['total_rows'] = $total_records;
             $config['per_page'] = $limit_per_page;
             $config["uri_segment"] = 3;
@@ -68,25 +68,26 @@ class Welcome extends CI_Controller {
         }
          
 
-		$this->load->view('element/Header');
-		$this->load->view('Welcome_message',$data);
-		$this->load->view('element/Footer');
+		$this->load->view('element/header');
+		$this->load->view('user/user-home',$data);
+		$this->load->view('element/footer');
 	}
 	
-	public function detail($id){
+	public function detail(){
+		$id = $this->input->get('id');
 		$data['data'] = $this->M_produk->tampil_kategori();
 		$data['produk'] = $this->M_produk->tampil_detailproduk($id);
-		$this->load->view('element/Header');
-		$this->load->view('V_detailproduk',$data);
-		$this->load->view('element/Footer');
+		$this->load->view('element/header');
+		$this->load->view('user/user-detail-produk',$data);
+		$this->load->view('element/footer');
 	}
-	public function katproduk(){
-		$idk = $this->uri->segment(3);
+	public function kategori(){
+		$idk = $this->input->get('id');
 		$data['data'] = $this->M_produk->tampil_kategori();
 		$data['produk'] = $this->M_produk->katprod($idk);
-		$this->load->view('element/Header');
-		$this->load->view('Welcome_message',$data);
-		$this->load->view('element/Footer');
+		$this->load->view('element/header');
+		$this->load->view('user/user-home',$data);
+		$this->load->view('element/footer');
 	}
 
 }

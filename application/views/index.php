@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="<?php echo base_url('Beranda'); ?>"><img style="width: 50%;" src="<?php echo base_url('assets/images/home/logo.png'); ?>" alt="" /></a>
+							<a href="<?php echo base_url(); ?>"><img style="width: 50%;" src="<?php echo base_url('assets/images/home/logo.png'); ?>" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right clearfix">
 						</div>
@@ -65,11 +65,11 @@
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="<?php echo base_url('Beranda'); ?>"><i class="fa fa-home"></i>Beranda</a></li>
-								<li><a href="<?php echo base_url('Beranda/About'); ?>"><i class="fa fa-question-circle"></i>Tentang Purnamajati</a></li>
-								<li><a href="<?php echo base_url('U_tentang'); ?>"><i class="fa fa-comments"></i>Hubungi kami!</a></li>
-								<li><a href="<?php echo base_url('Login'); ?>"><i class="fa fa-lock"></i> Login</a></li>
-								<li><a href="<?php echo base_url('Login'); ?>"><i class="fa fa-sign-in"></i>Daftar</a></li>
+								<li><a href="<?php echo base_url(); ?>"><i class="fa fa-home"></i>Beranda</a></li>
+								<li><a href="<?php echo base_url('home/about'); ?>"><i class="fa fa-question-circle"></i>Tentang Purnamajati</a></li>
+								<li><a href="<?php echo base_url('home/contact'); ?>"><i class="fa fa-comments"></i>Hubungi kami!</a></li>
+								<li><a href="<?php echo base_url('login'); ?>"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="<?php echo base_url('login'); ?>"><i class="fa fa-sign-in"></i>Daftar</a></li>
 							</ul>
 						</div>
 					</div>
@@ -80,77 +80,12 @@
 		
 	</header><!--/header-->
 	
-	<section id="slider"><!--slider-->
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-							<li data-target="#slider-carousel" data-slide-to="1"></li>
-							<li data-target="#slider-carousel" data-slide-to="2"></li>
-						</ol>
-						
-						<div class="carousel-inner">
-							<div class="item active">
-								<div class="col-sm-6">
-									<h1><span>P</span>urnamajati</h1>
-									<h2>Jember</h2>
-									<p>Tempat jual beli makanan oleh-oleh khas jember </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="<?php echo base_url('assets/images/home/girl1.jpg'); ?>" class="girl img-responsive" alt="" />
-									<img src="<?php echo base_url('assets/images/home/pricing.png'); ?>"  class="pricing" alt="" />
-								</div>
-							</div>
-							<div class="item">
-								<div class="col-sm-6">
-									<h1><span>P</span>urnamajati</h1>
-									<h2>Jember</h2>
-									<p>Tempat jual beli makanan oleh-oleh khas jember </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="<?php echo base_url('assets/images/home/girl2.jpg'); ?>" class="girl img-responsive" alt="" />
-									<img src="<?php echo base_url('assets/images/home/pricing.png'); ?>"  class="pricing" alt="" />
-								</div>
-							</div>
-							
-							<div class="item">
-								<div class="col-sm-6">
-									<h1><span>P</span>urnamajati</h1>
-									<h2>Jember</h2>
-									<p>Tempat jual beli makanan oleh-oleh khas jember </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="<?php echo base_url('assets/images/home/girl1.jpg'); ?>" class="girl img-responsive" alt="" />
-									<img src="<?php echo base_url('assets/images/home/pricing.png'); ?>" class="pricing" alt="" />
-								</div>
-							</div>
-							
-						</div>
-						
-						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-							<i class="fa fa-angle-left"></i>
-						</a>
-						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-							<i class="fa fa-angle-right"></i>
-						</a>
-					</div>
-					
-				</div>
-			</div>
-		</div>
-	</section><!--/slider-->
 	
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Kategori</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default">
 								<div class="panel-heading">
@@ -158,7 +93,7 @@
 											<div class="panel panel-default">
 												<div class="panel-heading">
 													<h4 class="panel-title">
-														<a href="<?php echo base_url('Beranda/katproduk/'.$u->id_kategori); ?>"><?php echo $u->nama_kategori ; ?></a>
+														<a href="<?php echo base_url('home/kategori?id='.$u->id_kategori); ?>"><?php echo $u->nama_kategori ; ?></a>
 													</h4>
 												</div>
 											</div>
@@ -174,8 +109,7 @@
 				</div>
 				
 				<div class="col-sm-9 padding-right">
-					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Produk</h2>
+					<div class="features_items">
 						<?php foreach($produk as $a){ ?>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
@@ -185,7 +119,7 @@
 											<h2>Rp <?php $format_indonesia = number_format ($a->harga, 0, ',', '.');
                           						echo $format_indonesia; ?> </h2>
 											<p><?php echo $a->nama_produk ; ?></p>
-											<a href="<?php echo base_url('Beranda/detail/'.$a->id_produk); ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Tambah ke keranjang</a>
+											<a href="<?php echo base_url('home/detail?id='.$a->id_produk); ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Tambah ke keranjang</a>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
@@ -193,7 +127,7 @@
                           						echo $format_indonesia; ?> </h2>
 												<p><?php echo $a->nama_produk ; ?></p>
 												<p><i class="fa fa-check-square"></i> Stok : <?php echo $a->stok; ?></p>
-												<a href="<?php echo base_url('Beranda/detail/'.$a->id_produk); ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Tambah ke keranjang</a>
+												<a href="<?php echo base_url('home/detail?id='.$a->id_produk); ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Tambah ke keranjang</a>
 											</div>
 										</div>
 								</div>

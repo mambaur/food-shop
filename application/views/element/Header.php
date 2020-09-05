@@ -27,25 +27,25 @@
 
 <body>
 	<header id="header"><!--header-->
-		<div class="header_top" style="background-color: #E74C3C;"><!--header_top #f76767-->
+		<div class="header_top"><!--header_top #f76767-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a style="color: white;" href="#"><i style="color: white;" class="fa fa-phone"></i> +6282234344953</a></li>
-								<li><a style="color: white;" href="#"><i style="color: white;" class="fa fa-envelope"></i> Purnamajati@gmail.com</a></li>
+								<li><a href="#"><i class="fa fa-phone"></i> +6282234344953</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> Purnamajati@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i style="color: white;" class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i style="color: white;" class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i style="color: white;" class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i style="color: white;" class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i style="color: white;" class="fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -58,7 +58,7 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="<?php echo base_url('Welcome'); ?>"><img style="width: 50%;" src="<?php echo base_url('assets/images/home/logo.png'); ?>" alt="" /></a>
+							<a href="<?php echo base_url('user/home'); ?>"><img style="width: 50%;" src="<?php echo base_url('assets/images/home/logo.png'); ?>" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right clearfix">
 						</div>
@@ -66,11 +66,9 @@
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
-								<!-- <li><a href=""><i class="fa fa-sign-in"></i>Daftar</a></li>
-								<li><a href="<?php echo base_url('Login'); ?>"><i class="fa fa-lock"></i> Login</a></li> -->
-								<li><a href="<?php echo base_url('Profil') ?>"><i class="fa fa-user"></i> Hai ,<?php echo $this->session->userdata("namauser"); ?>!</a></li>
+								<li><a href="<?php echo base_url('user/profil') ?>"><i class="fa fa-user"></i> Hai ,<?php echo $this->session->userdata("namauser"); ?>!</a></li>
 								
-								<li><a href="<?php echo base_url('Logout') ?>"><i class="fa fa-sign-out"></i> Logout</a></li>
+								<li><a href="<?php echo base_url('logout') ?>"><i class="fa fa-sign-out"></i> Logout</a></li>
 							</ul>
 						</div>
 					</div>
@@ -92,20 +90,17 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="<?php echo base_url('Welcome'); ?>" class="active"><i class="fa fa-home"></i> Beranda</a></li>
-								<li><a href="<?php echo base_url('Keranjang'); ?>"><i class="fa fa-shopping-cart"></i> Keranjang</a></li> 
+								<li><a href="<?php echo base_url('user/home'); ?>" class="active"><i class="fa fa-home"></i> Beranda</a></li>
+								<li><a href="<?php echo base_url('user/keranjang'); ?>"><i class="fa fa-shopping-cart"></i> Keranjang</a></li> 
 								<!-- <li><a href="ongkir">Ongkir</a></li> -->
-								<li><a href="<?php echo base_url('Transaksi'); ?>"><i class="fa fa-book"></i> Transaksi</a></li>
-								<li><a href="<?php echo base_url('bukti'); ?>"><i class="fa fa-money"></i> Bukti Pembayaran</a></li>
-								<li><a href="<?php echo base_url('Contact'); ?>"><i class="fa fa-question-circle"></i> Hubungi kami!</a></li>
-								<!-- <li><a target="_blank" href="<?php echo base_url('Admin_controller/A_login'); ?>"><i class="fa fa-unlock-alt"></i> Admin</a></li>
-								<li><a target="_blank" href="<?php echo base_url('Owner_controller/O_login'); ?>"><i class="fa fa-unlock-alt"></i> Owner</a></li> -->
+								<li><a href="<?php echo base_url('user/transaksi'); ?>"><i class="fa fa-book"></i> Transaksi</a></li>
+								<li><a href="<?php echo base_url('user/pembayaran'); ?>"><i class="fa fa-money"></i> Bukti Pembayaran</a></li>
+								<li><a href="<?php echo base_url('user/contact'); ?>"><i class="fa fa-question-circle"></i> Hubungi kami!</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-							<!-- <input type="text" placeholder="Search"/> -->
 						</div>
 					</div>
 				</div>

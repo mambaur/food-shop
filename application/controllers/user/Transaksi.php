@@ -9,17 +9,17 @@ class Transaksi extends CI_Controller {
 		if($this->session->userdata('status') != "login"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
-                window.location.href = '".base_url('Login')."';
-            </script>";//Url tujuan
+                window.location.href = '".base_url('login')."';
+            </script>";
 		}
 	}
 
 	public function index(){
 		$iduser = $this->session->userdata("iduser");
 		$data['pesan'] = $this->M_transaksi->tampil_pesan($iduser);
-		$this->load->view('element/Header');
-		$this->load->view('V_transaksi',$data);
-		$this->load->view('element/Footer');
+		$this->load->view('element/header');
+		$this->load->view('user/user-transaksi',$data);
+		$this->load->view('element/footer');
 	}
 	public function detail_transaksi(){
 		$iduser = $this->session->userdata("iduser");

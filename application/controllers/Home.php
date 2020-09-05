@@ -1,14 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Beranda extends CI_Controller {
+class Home extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('M_produk');
+		$this->load->model('M_produk');		
+		$this->load->model('M_contact');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('status') == "login"){
-			redirect('Welcome','refresh');
+			redirect('user','refresh');
 		}
 	}
 
@@ -24,7 +25,7 @@ class Beranda extends CI_Controller {
         {
             $data["produk"] = $this->M_produk->get_current_page_records($limit_per_page, $page*$limit_per_page);
                  
-            $config['base_url'] = base_url() . 'Beranda/index';
+            $config['base_url'] = base_url() . 'Home/index';
             $config['total_rows'] = $total_records;
             $config['per_page'] = $limit_per_page;
             $config["uri_segment"] = 3;
@@ -59,24 +60,64 @@ class Beranda extends CI_Controller {
             $data["links"] = $this->pagination->create_links();
         }
          
-		$this->load->view('U_beranda',$data);
+		$this->load->view('index',$data);
+		$this->load->view('element/footer');
+	}
+
+	public function detail(){
+		$id = $this->input->get('id');
+		$data = [
+			'data' => $this->M_produk->tampil_kategori(),
+			'produk' => $this->M_produk->tampil_detailproduk($id)
+		];
+		$this->load->view('detail',$data);
+		$this->load->view('element/footer');
+	}
+
+	public function kategori(){
+		$id = $this->input->get('id');
+		$data = [
+			'data' => $this->M_produk->tampil_kategori(),
+			'produk' => $this->M_produk->katprod($id)
+		];
+		$this->load->view('index',$data);
+		$this->load->view('element/footer');
+	}
+
+	public function about(){
+		$this->load->view('about');
+		$this->load->view('element/footer');
+	}
+
+	public function contact(){
+		$this->load->view('contact');
 		$this->load->view('element/Footer');
 	}
 
-	public function detail($id){
-		$data['data'] = $this->M_produk->tampil_kategori();
-		$data['produk'] = $this->M_produk->tampil_detailproduk($id);
-		$this->load->view('U_detail',$data);
-		$this->load->view('element/Footer');
-	}
-	public function katproduk($idk){
-		$data['data'] = $this->M_produk->tampil_kategori();
-		$data['produk'] = $this->M_produk->katprod($idk);
-		$this->load->view('U_beranda',$data);
-		$this->load->view('element/Footer');
-	}
-	public function About(){
-		$this->load->view('Tentangpurnamajati');
-		$this->load->view('element/Footer');
+	public function pesan(){
+		$nama=$this->input->post('nama');
+		$email=$this->input->post('email');
+		$judul=$this->input->post('judul');
+		$pesan=$this->input->post('pesan');
+		$tgl=date('Y-m-d');
+
+		$this->M_contact->insert_contact($nama,$email,$judul,$pesan,$tgl);
+		$cek = $this->db->get_where('tentang', [
+			'nama_tentang' => $nama, 
+			'judul_tentang' => $judul, 
+			'isi_pesan' => $pesan
+		])->num_rows();
+		// $cek = $this->db->query("SELECT * FROM tentang WHERE nama_tentang='$nama' AND judul_tentang='$judul' AND isi_pesan='$pesan'")->num_rows();
+		if ($cek >= 1){
+			echo "<script>
+                alert('Pesan telah terkirim');
+                window.location.href = '".base_url('home/contact')."';
+            </script>";//Url tujuan
+		}elseif ($cek == 0) {
+			echo "<script>
+                alert('Pesan gagal terkirim');
+                window.location.href = '".base_url('home/contact')."';
+            </script>";//Url tujuan
+		}
 	}
 }

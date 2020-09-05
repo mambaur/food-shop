@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="<?php echo base_url('Beranda'); ?>"><img style="width: 50%;" src="<?php echo base_url('assets/images/home/logo.png'); ?>" alt="" /></a>
+							<a href="<?php echo base_url(); ?>"><img style="width: 50%;" src="<?php echo base_url('assets/images/home/logo.png'); ?>" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right clearfix">
 						</div>
@@ -65,11 +65,11 @@
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="<?php echo base_url('Beranda'); ?>"><i class="fa fa-home"></i>Beranda</a></li>
-								<li><a href="<?php echo base_url('Beranda/About'); ?>"><i class="fa fa-question-circle"></i>Tentang Purnamajati</a></li>
-								<li><a href="<?php echo base_url('U_tentang'); ?>"><i class="fa fa-comments"></i>Hubungi kami!</a></li>
-								<li><a href="<?php echo base_url('Login'); ?>"><i class="fa fa-lock"></i> Login</a></li>
-								<li><a href="<?php echo base_url('Login'); ?>"><i class="fa fa-sign-in"></i>Daftar</a></li>
+								<li><a href="<?php echo base_url(); ?>"><i class="fa fa-home"></i>Beranda</a></li>
+								<li><a href="<?php echo base_url('home/about'); ?>"><i class="fa fa-question-circle"></i>Tentang Purnamajati</a></li>
+								<li><a href="<?php echo base_url('home/contact'); ?>"><i class="fa fa-comments"></i>Hubungi kami!</a></li>
+								<li><a href="<?php echo base_url('login'); ?>"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="<?php echo base_url('login'); ?>"><i class="fa fa-sign-in"></i>Daftar</a></li>
 							</ul>
 						</div>
 					</div>
@@ -90,7 +90,7 @@
 	    			<div class="contact-form">
 	    				<h2 class="title text-center">Hubungi Kami</h2>
 	    				<div class="status alert alert-success" style="display: none"></div>
-				    	<form action="<?php echo base_url('U_tentang/tambah_contact'); ?>" id="main-contact-form" class="contact-form row" name="contact-form" method="post">
+				    	<form action="<?php echo base_url('home/pesan'); ?>" id="main-contact-form" class="contact-form row" name="contact-form" method="post">
 				            <div class="form-group col-md-6">
 				                <input type="text" name="nama" class="form-control" required="required" placeholder="Nama">
 				            </div>

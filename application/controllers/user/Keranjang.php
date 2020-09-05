@@ -5,13 +5,13 @@ class Keranjang extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('M_pesanan');
+		$this->load->model('M_keranjang');
 		$this->load->library('cart');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('status') != "login"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
-                window.location.href = '".base_url('Login')."';
+                window.location.href = '".base_url('login')."';
             </script>";//Url tujuan
 
 		}
@@ -19,35 +19,34 @@ class Keranjang extends CI_Controller {
 
 	public function index(){
 		$user = $this->session->userdata("iduser");
-		$idpesan = $this->M_pesanan->get_idpesan();
+		$idpesan = $this->M_keranjang->get_idpesan();
 
-		// $data['berat_total'] = $this->M_pesanan->total_berat($idpesan,$user);
-		// $data['idpsn'] = $this->M_pesanan->get_idpesan($user);
-		// $data['produk'] = $this->M_pesanan->tampil_barang($idpesan,$user);
 		$this->load->view('element/Header');
-		$this->load->view('V_pesanan');
+		$this->load->view('user/user-keranjang');
 		$this->load->view('element/Footer');
 	}
-	function insert1(){
+	function insert(){
 		$user = $this->session->userdata("iduser");
-
-		$data_produk= array('id' => $this->uri->segment(3),
+		$idproduk = $this->input->get('id');
+		$harga = $this->input->get('harga');
+		$berat = $this->input->get('berat');
+		$data_produk= array('id' => $this->$idproduk,
 							 'name' => $this->input->post('nama_produk'),
-							 'price' => $this->uri->segment(4),
+							 'price' => $harga,
 							 'gambar' => $this->input->post('gambar'),
 							 'stok' => $this->input->post('stok'),
-							 'berat' => $this->uri->segment(5),
-							 'idpesan' => $this->M_pesanan->get_idpesan(),
+							 'berat' => $berat,
+							 'idpesan' => $this->M_keranjang->get_idpesan(),
 							 'qty' =>$this->input->post('value')
 							);
 		$this->cart->insert($data_produk);
 		echo "<script>
                 alert('Produk berhasil dimasukkan ke keranjang');
-                window.location.href = '".base_url('Keranjang')."';
+                window.location.href = '".base_url('user/keranjang')."';
             </script>";
 	}
 
-	public function update_krj(){
+	public function update(){
 		$cart_info = $_POST['cart'] ;
 		foreach( $cart_info as $id => $cart)
 		{
@@ -63,11 +62,11 @@ class Keranjang extends CI_Controller {
 		}
 		echo "<script>
                 alert('Jumlah berhasil di update');
-                window.location.href = '".base_url('Keranjang')."';
+                window.location.href = '".base_url('user/keranjang')."';
             </script>";
 	}
 
-	public function hapus_krj($rowid){
+	public function hapus($rowid){
 		if ($rowid=="all")
 			{
 				$this->cart->destroy();
@@ -78,7 +77,7 @@ class Keranjang extends CI_Controller {
 			  				  'qty' =>0);
 				$this->cart->update($data);
 			}
-		redirect('keranjang');
+		redirect('user/keranjang');
 	}
 
 	function getCity($province){		

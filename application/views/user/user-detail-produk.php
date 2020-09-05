@@ -60,7 +60,7 @@
 								<img src="<?php echo base_url('assets/images/product-details/rating.png'); ?>" alt="" />
 								
 								<span>
-									<form action="<?php echo base_url('Keranjang/insert1/'.$a->id_produk.'/'.$a->harga.'/'.$a->berat); ?>" method="post">
+									<form action="<?php echo base_url('user/keranjang/insert?id='.$a->id_produk.'&harga='.$a->harga.'&berat='.$a->berat); ?>" method="post">
 									<span>Rp <?php $format_indonesia = number_format ($a->harga, 0, ',', '.');
                           						echo $format_indonesia; ?> </span>
 									<label>Jumlah:</label>

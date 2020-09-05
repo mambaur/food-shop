@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="<?php echo base_url('Beranda'); ?>"><img style="width: 50%;" src="<?php echo base_url('assets/images/home/logo.png'); ?>" alt="" /></a>
+							<a href="<?php echo base_url(); ?>"><img style="width: 50%;" src="<?php echo base_url('assets/images/home/logo.png'); ?>" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right clearfix">
 						</div>
@@ -65,11 +65,11 @@
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="<?php echo base_url('Beranda'); ?>"><i class="fa fa-home"></i>Beranda</a></li>
-								<li><a href="<?php echo base_url('Beranda/About'); ?>"><i class="fa fa-question-circle"></i>Tentang Purnamajati</a></li>
-								<li><a href="<?php echo base_url('U_tentang'); ?>"><i class="fa fa-comments"></i>Hubungi kami!</a></li>
-								<li><a href="<?php echo base_url('Login'); ?>"><i class="fa fa-lock"></i> Login</a></li>
-								<li><a href="<?php echo base_url('Login'); ?>"><i class="fa fa-sign-in"></i>Daftar</a></li>
+								<li><a href="<?php echo base_url(); ?>"><i class="fa fa-home"></i>Beranda</a></li>
+								<li><a href="<?php echo base_url('home/about'); ?>"><i class="fa fa-question-circle"></i>Tentang Purnamajati</a></li>
+								<li><a href="<?php echo base_url('home/contact'); ?>"><i class="fa fa-comments"></i>Hubungi kami!</a></li>
+								<li><a href="<?php echo base_url('login'); ?>"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="<?php echo base_url('login'); ?>"><i class="fa fa-sign-in"></i>Daftar</a></li>
 							</ul>
 						</div>
 					</div>
@@ -86,9 +86,9 @@
 		</div>
 		<div class="col-md-5">
 			<h2>Profil Purnamajati</h2><hr>
-			<p>&nbsp&nbsp&nbsp&nbsp Kabupaten Jember merupakan suatu daerah yang memiliki banyak sekali olahan kuliner menarik yang tentunya dapat menggugah selera makan kita. Nah, <a href="<?php echo base_url('Beranda');?>">Purnamajati</a> merupakan salah satu outlet yang menjual berbagai macam makanan oleh-oleh khas Jember dengan beberapa produk yang diolah sendiri bahkan sudah terjual sampai keluar kota.</p>
+			<p>&nbsp&nbsp&nbsp&nbsp Kabupaten Jember merupakan suatu daerah yang memiliki banyak sekali olahan kuliner menarik yang tentunya dapat menggugah selera makan kita. Nah, <a href="<?php echo base_url();?>">Purnamajati</a> merupakan salah satu outlet yang menjual berbagai macam makanan oleh-oleh khas Jember dengan beberapa produk yang diolah sendiri bahkan sudah terjual sampai keluar kota.</p>
 
-			<p>&nbsp&nbsp&nbsp&nbsp Produk yang dijual pun bermacam-macam seperti Prol tape, Pia edamame, Brownis tape, dan masih banyak lagi. Lokasi outlet <a href="<?php echo base_url('Beranda');?>">Purnamajati</a> itu sendiri berada di Jl. Bungur No.09, Darwo Timur, Gebang, Patrang, Jember</p>
+			<p>&nbsp&nbsp&nbsp&nbsp Produk yang dijual pun bermacam-macam seperti Prol tape, Pia edamame, Brownis tape, dan masih banyak lagi. Lokasi outlet <a href="<?php echo base_url();?>">Purnamajati</a> itu sendiri berada di Jl. Bungur No.09, Darwo Timur, Gebang, Patrang, Jember</p>
 
 			<p>&nbsp&nbsp&nbsp&nbsp Outlet Purnamajati buka mulai dari jam <b>09.00</b> pagi hingga jam <b>20.00</b> malam, jadi jangan lupa beli ya sebelum tokonya tutup yaa!</p>
 		</div>

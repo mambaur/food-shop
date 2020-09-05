@@ -7,18 +7,16 @@ class Login extends CI_Controller {
 		$this->load->model('M_login');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('status') == "login"){
-			redirect('Welcome','refresh');
+			redirect('user','refresh');
 		}
 	}
  
 	public function index(){
-		// $data['user'] = $this->M_login->datauser();
-		$this->load->view('V_login');
-		$this->load->view('element/Footer');
+		$this->load->view('login');
+		$this->load->view('element/footer');
 	}
-	// 'password' => md5($password),
  
-	function aksi_login(){
+	function autentikasi(){
 		$username = $this->input->post('email');
 		$password = $this->input->post('password');
 		foreach($this->M_login->iduser($username) as $row){
@@ -42,20 +40,15 @@ class Login extends CI_Controller {
  
 			$this->session->set_userdata($data_session);
  
-			redirect('Welcome');
+			redirect('user/home');
  
 		}else{
 			echo "<script>
                 alert('Username dan password salah');
-                window.location.href = '".base_url('Login')."';
+                window.location.href = '".base_url('login')."';
             </script>";//Url tujuan
 		}
 	}
- 
-	// function logout(){
-	// 	$this->session->sess_destroy();
-	// 	redirect(base_url('Login'));
-	// }
 
 	public function daftar(){
 		$iduser = $this->M_login->get_iduser();
@@ -87,7 +80,7 @@ class Login extends CI_Controller {
  
 			echo "<script>
                 alert('Register berhasil, selamat datang ".$this->session->userdata("namauser")." !');
-                window.location.href = '".base_url('Welcome')."';
+                window.location.href = '".base_url('user/home')."';
             </script>";//Url tujuan
 		}
 	}
