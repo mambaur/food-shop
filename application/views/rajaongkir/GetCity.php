@@ -20,25 +20,13 @@ $curl = curl_init();
 		curl_close($curl);
 
 		if ($err) {
-		  echo "cURL Error #:" . $err;
+		 	echo "cURL Error #:" . $err;
 		} else {
-		  //echo $response;
 			$data = json_decode($response, true);
-		  //echo json_encode($k['rajaongkir']['results']);
 
-		  
-		  for ($j=0; $j < count($data['rajaongkir']['results']); $j++){
-		  
+			for ($j=0; $j < count($data['rajaongkir']['results']); $j++){
+				echo "<option value='".$data['rajaongkir']['results'][159]['city_id']."'>".$data['rajaongkir']['results'][159]['city_name']." (".$data['rajaongkir']['results'][159]['type'].")"."</option>";
 
-		    echo "<option value='".$data['rajaongkir']['results'][159]['city_id']."'>".$data['rajaongkir']['results'][159]['city_name']." (".$data['rajaongkir']['results'][159]['type'].")"."</option>";
-		  	 /*
-		  	 if($data['rajaongkir']['results'][$j]['type']=="Kabupaten"){
-		  	 	echo "Kabupaten";
-		  	 }esle{
-		  	 	echo "Kota";
-		  	 }
-		  	 */
-
-		  }
+			}
 		}
 ?>

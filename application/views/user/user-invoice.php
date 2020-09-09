@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E-market - Bukti pemesanan</title>
+    <title>Purnamajati - Invoice</title>
 
-    <link href="<?php echo base_url('assets/css/font-awesome.min.css') ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/all.min.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/invoice.css'); ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/css/font-awesome.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/all.min.css'); ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/invoice.css'); ?>" rel="stylesheet">
 
 </head>
 <body>  
@@ -17,8 +17,8 @@
 
     <div class="row invoice-header">
         <div class="invoice-col">
-            <p><a href="<?php echo base_url('Welcome'); ?>"><img width="60%" src="<?php echo base_url('assets/images/home/logo.png'); ?>" /></a></p><br>
-            <h4>Kode Pesan : <?php echo $idpesan; ?></43>
+            <p><a href="<?= base_url('Welcome'); ?>"><img width="60%" src="<?php echo base_url('assets/images/home/logo.png'); ?>" /></a></p><br>
+            <h4>Kode Pesan : <?= $idpesan; ?></43>
         </div>
         
         <div class="invoice-col text-center">
@@ -53,9 +53,9 @@
                 <?php foreach($inv2 as $a){ 
                      echo $a->nama_user; 
                 ?><br />                        
-                <?php echo $a->alamat; ?><br />
-                <?php echo $a->no_telp; ?><br />
-                <?php echo $a->email; ?><br />
+                <?= $a->alamat; ?><br />
+                <?= $a->no_telp; ?><br />
+                <?= $a->email; ?><br />
                 <?php } ?>
             </address>
         </div>

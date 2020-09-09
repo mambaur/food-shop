@@ -10,7 +10,7 @@ class Contact extends CI_Controller {
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
                 window.location.href = '".base_url('login')."';
-            </script>";//Url tujuan
+            </script>";
 		}
 	}
 
@@ -30,15 +30,15 @@ class Contact extends CI_Controller {
 		if ($cek >= 1){
 			echo "<script>
                 alert('Pesan telah terkirim');
-                window.location.href = '".base_url('Contact')."';
-            </script>";//Url tujuan
+                window.location.href = '".base_url('user/contact')."';
+            </script>";
 		}elseif ($cek == 0) {
 			echo "<script>
                 alert('pesan gagal terkirim');
-                window.location.href = '".base_url('Contact')."';
-            </script>";//Url tujuan
+                window.location.href = '".base_url('user/contact')."';
+            </script>";
 		}
-		redirect('Contact');
+		redirect('user/contact');
 	}
 }
 ?>

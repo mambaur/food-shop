@@ -21,7 +21,7 @@ class Transaksi extends CI_Controller {
 		$this->load->view('user/user-transaksi',$data);
 		$this->load->view('element/footer');
 	}
-	public function detail_transaksi(){
+	public function detail(){
 		$iduser = $this->session->userdata("iduser");
 		$data['status'] = $this->input->post("status");
 		$data['kodepos'] = $this->input->post("kode_pos");
@@ -31,7 +31,7 @@ class Transaksi extends CI_Controller {
 		$data['inv2'] = $this->M_transaksi->user($iduser);
 		$data['pengiriman'] = $this->input->post('harga_kirim');
 		$data['total2'] = $this->input->post('total_pesan');
-		$this->load->view('V_invoice',$data);
+		$this->load->view('user/user-invoice',$data);
 	}
 }
 ?>

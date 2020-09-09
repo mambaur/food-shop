@@ -23,8 +23,8 @@ class Home extends CI_Controller {
 		// ----------------------Pagination---------------------------
         // init params
         $params = array();
-        $limit_per_page = 6;
-        $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
+		$limit_per_page = 6;
+        $page = ($this->uri->segment(4)) ? ($this->uri->segment(4) - 1) : 0;
         $total_records = $this->M_produk->get_total();
      
         if ($total_records > 0)
@@ -35,7 +35,7 @@ class Home extends CI_Controller {
             $config['base_url'] = base_url() . 'user/home/index';
             $config['total_rows'] = $total_records;
             $config['per_page'] = $limit_per_page;
-            $config["uri_segment"] = 3;
+            $config["uri_segment"] = 4;
              
             // custom paging configuration
             $config['num_links'] = 2;
@@ -75,8 +75,11 @@ class Home extends CI_Controller {
 	
 	public function detail(){
 		$id = $this->input->get('id');
-		$data['data'] = $this->M_produk->tampil_kategori();
-		$data['produk'] = $this->M_produk->tampil_detailproduk($id);
+		$data = [
+			'data' => $this->M_produk->tampil_kategori(),
+			'produk' => $this->db->get_where('produk', ['id_produk' => $id])->row_array()
+		];
+		// $data['produk'] = $this->M_produk->tampil_detailproduk($id);
 		$this->load->view('element/header');
 		$this->load->view('user/user-detail-produk',$data);
 		$this->load->view('element/footer');

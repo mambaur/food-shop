@@ -23,19 +23,10 @@ curl_close($curl);
 if ($err) {
   echo "cURL Error #:" . $err;
 } else {
-  //echo $response;
-  
   $data = json_decode($response, true);
-  //echo json_encode($k['rajaongkir']['results']);
-
-  
   for ($i=0; $i < count($data['rajaongkir']['results']); $i++){
-  
-
     echo "<option value='".$data['rajaongkir']['results'][10]['province_id']."'>".$data['rajaongkir']['results'][10]['province']."</option>";
   
   }
-
 }
-
 ?>

@@ -20,24 +20,25 @@ class Keranjang extends CI_Controller {
 	public function index(){
 		$user = $this->session->userdata("iduser");
 		$idpesan = $this->M_keranjang->get_idpesan();
-
 		$this->load->view('element/Header');
 		$this->load->view('user/user-keranjang');
 		$this->load->view('element/Footer');
 	}
+
 	function insert(){
 		$user = $this->session->userdata("iduser");
 		$idproduk = $this->input->get('id');
-		$harga = $this->input->get('harga');
-		$berat = $this->input->get('berat');
-		$data_produk= array('id' => $this->$idproduk,
-							 'name' => $this->input->post('nama_produk'),
-							 'price' => $harga,
-							 'gambar' => $this->input->post('gambar'),
-							 'stok' => $this->input->post('stok'),
-							 'berat' => $berat,
+		$qty = $this->input->post('value');
+		$data = $this->db->get_where('produk', ['id_produk' => $idproduk])->row_array();
+
+		$data_produk= array('id' => $idproduk,
+							 'name' => $data['nama_produk'],
+							 'price' => $data['harga'],
+							 'gambar' => $data['gambar'],
+							 'stok' => $data['stok'],
+							 'berat' => $data['berat'],
 							 'idpesan' => $this->M_keranjang->get_idpesan(),
-							 'qty' =>$this->input->post('value')
+							 'qty' => $qty
 							);
 		$this->cart->insert($data_produk);
 		echo "<script>
@@ -105,24 +106,12 @@ class Keranjang extends CI_Controller {
 		if ($err) {
 		  echo "cURL Error #:" . $err;
 		} else {
-		  //echo $response;
 			$data = json_decode($response, true);
-		  //echo json_encode($k['rajaongkir']['results']);
+			for ($j=0; $j < count($data['rajaongkir']['results']); $j++){
+			
 
-		  
-		  for ($j=0; $j < count($data['rajaongkir']['results']); $j++){
-		  
-
-		    echo "<option value='".$data['rajaongkir']['results'][$j]['city_id']."'>".$data['rajaongkir']['results'][$j]['city_name']." (".$data['rajaongkir']['results'][$j]['type'].")"."</option>";
-		  	 /*
-		  	 if($data['rajaongkir']['results'][$j]['type']=="Kabupaten"){
-		  	 	echo "Kabupaten";
-		  	 }esle{
-		  	 	echo "Kota";
-		  	 }
-		  	 */
-
-		  }
+				echo "<option value='".$data['rajaongkir']['results'][$j]['city_id']."'>".$data['rajaongkir']['results'][$j]['city_name']." (".$data['rajaongkir']['results'][$j]['type'].")"."</option>";
+			}
 		}
 	}
 

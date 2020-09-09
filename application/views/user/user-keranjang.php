@@ -20,28 +20,28 @@
 				$total_berat=0;
 				foreach($cart as $a){  
 				?>
-				<form action="<?php echo base_url('user/keranjang/update/'); ?>" method="post">
+				<form action="<?= base_url('user/keranjang/update/'); ?>" method="post">
 				<tbody>
 					<?php 
 					$total_berat+=$a['berat']*$a['qty']; ?>
 
-					<input type="hidden" name="cart[<?php echo $a['id'];?>][id]" value="<?php echo $a['id'];?>" />
-					<input type="hidden" name="cart[<?php echo $a['id'];?>][rowid]" value="<?php echo $a['rowid'];?>" />
-					<input type="hidden" name="cart[<?php echo $a['id'];?>][name]" value="<?php echo $a['name'];?>" />
-					<input type="hidden" name="cart[<?php echo $a['id'];?>][price]" value="<?php echo $a['price'];?>" />
-					<input type="hidden" name="cart[<?php echo $a['id'];?>][gambar]" value="<?php echo $a['gambar'];?>" />
-					<input type="hidden" name="cart[<?php echo $a['id'];?>][qty]" value="<?php echo $a['qty'];?>" />
-					<input type="hidden" name="cart[<?php echo $a['id'];?>][stok]" value="<?php echo $a['stok'];?>" />
-					<input type="hidden" name="cart[<?php echo $a['id'];?>][berat]" value="<?php echo $a['berat'];?>" />
-					<input type="hidden" name="cart[<?php echo $a['id'];?>][idpesan]" value="<?php echo $a['idpesan'];?>" />
+					<input type="hidden" name="cart[<?= $a['id'];?>][id]" value="<?= $a['id'];?>" />
+					<input type="hidden" name="cart[<?= $a['id'];?>][rowid]" value="<?= $a['rowid'];?>" />
+					<input type="hidden" name="cart[<?= $a['id'];?>][name]" value="<?= $a['name'];?>" />
+					<input type="hidden" name="cart[<?= $a['id'];?>][price]" value="<?= $a['price'];?>" />
+					<input type="hidden" name="cart[<?= $a['id'];?>][gambar]" value="<?= $a['gambar'];?>" />
+					<input type="hidden" name="cart[<?= $a['id'];?>][qty]" value="<?= $a['qty'];?>" />
+					<input type="hidden" name="cart[<?= $a['id'];?>][stok]" value="<?= $a['stok'];?>" />
+					<input type="hidden" name="cart[<?= $a['id'];?>][berat]" value="<?= $a['berat'];?>" />
+					<input type="hidden" name="cart[<?= $a['id'];?>][idpesan]" value="<?= $a['idpesan'];?>" />
 					
 					<tr>
 						<td class="cart_product">
-							<a href=""><img style="width: 110px;height: 110px;" src="<?php echo base_url($a['gambar']); ?>" alt=""></a>
+							<a href=""><img style="width: 110px;height: 110px;" src="<?= base_url($a['gambar']); ?>" alt=""></a>
 						</td>
 						<td class="cart_description">
-							<h4><a href=""><?php print $a['name'] ;$x=$a['name']; ?>     (<?php echo $a['berat']*$a['qty']; ?> gram)</a></h4>
-							<p>Kode produk : <?php echo $a['id'] ; ?><br>Stok : <?php echo $a['stok']; ?></p>
+							<h4><a href=""><?php print $a['name'] ;$x=$a['name']; ?>     (<?= $a['berat']*$a['qty']; ?> gram)</a></h4>
+							<p>Kode produk : <?= $a['id'] ; ?><br>Stok : <?= $a['stok']; ?></p>
 						</td>
 						<td class="cart_price">
 							<p>Rp <?php $format_indonesia = number_format ($a['price'], 0, ',', '.');
@@ -67,38 +67,37 @@
 
 			<div style="margin-right: 45px;margin-bottom: 10px;text-align: right;">
 				<button type="submit" class="btn btn-fefault cart"><i class="fa fa-pencil"></i> Update keranjang</button>
-				<button type="button" class="btn btn-fefault cart"><a onclick="return confirm_alert(this);" style="color: white;" href="<?php echo base_url('Keranjang/hapus_krj/all'); ?>"><i class="fa fa-times"></i> Kosongkan keranjang</a></button>
+				<button type="button" class="btn btn-fefault cart"><a onclick="return confirm_alert(this);" style="color: white;" href="<?php echo base_url('user/keranjang/hapus/all'); ?>"><i class="fa fa-times"></i> Kosongkan keranjang</a></button>
 			</div>
 			</form>
 		</div>
-		<?php
-			}else{
-				echo "<h3>Keranjang Belanja masih kosong</h3>";	
-			}	
-		?>
+
 		<div class="register-req">
 			<p>Isi alamat pengiriman sesuai lokasi anda untuk mengetahui harga pengiriman serta untuk melanjutkan ke proses pemesanan</p>
-		</div><!--/register-req-->
+		</div>
 
 									
 		<h4>Alamat Pengiriman</h4>
 		<div class="row">
 			<div class="col-sm-6">
+			
 				<input class="form-control" type="text" name="namapengirim" id="namapengirim" placeholder="*Nama lengkap anda"><br>
+
 				<select class="form-control" name="propinsi_tujuan" id="propinsi_tujuan">
 					<option value="" selected="" disabled="">Pilih Provinsi</option>
 					<?php $this->load->view('rajaongkir/GetProvince'); ?>
 				</select><br>
+
 				<select class="form-control" name="destination" id="destination">
 					<option value="" selected="" disabled="">Pilih Kota</option>
 				</select><br>
+
 				<input class="form-control" type="text" name="kecamatan" id="kecamatan" placeholder="*Kecamatan"><br>
 				<input class="form-control" type="text" name="desa" id="desa" placeholder="*Desa">
 
-				<!-- <p>Alamat asal default jember</p> -->
+				<!-- Alamat asal default jember -->
 				<div style="display:none;">
 					<select class="form-control" name="propinsi_asal" id="propinsi_asal" required="required">
-						<!-- <option value="" selected="" disabled="">Pilih Provinsi</option> -->
 						<?php $this->load->view('rajaongkir/GetProvince2'); ?>
 					</select>
 					
@@ -127,93 +126,72 @@
 		</div>
 		<button style="width: 100%;height: 50px;" type="button" onclick="tampil_data('data')" class="btn btn-primary">Pilih Kurir Ongkir</button><br><br>
 		<div>
-			<h4>Daftar harga pengiriman</h4>
-			<div style="border: 1px solid #F0F0E9;height: 300px;">
-				"Klik cek ongkir, maka data harga akan muncul disini"
-				<ol>
-					<div id="hasil"></div>
-				</ol>
-			</div>
+			<div id="hasil"></div>
 		</div><br>
+		<?php
+			}else{
+				echo "<h3>Keranjang Belanja masih kosong</h3><br><br>";	
+			}	
+		?>
 	</div>
+
 </section>
 
-
-
-
-
-
-			<script>
-					function tampil_data(act){
-					      var w = $('#origin').val();
-					      var x = $('#destination').val();
-					      var y = $('#berat').val();
-					      var z = $('#courier').val();
-					      var a = $('#namapengirim').val();
-					      var b = $('#kecamatan').val();
-					      var c = $('#desa').val();
-					      var d = $('#kodepos').val();
-					      var e = $('#telp').val();
-
-					      $.ajax({
-					          url: "Rajaongkir/getCost",
-					          type: "GET",
-					          data : {
-					          	origin: w, 
-					          	destination: x, 
-					          	berat: y, 
-					          	courier: z, 
-					          	namapengirim: a, 
-					          	kecamatan:b, 
-					          	desa:c ,
-					          	kodepos:d, 
-					          	telp:e
-					          },
-					          success: function (ajaxData){
-					              //$('#tombol_export').show();
-					              //$('#hasilReport').show();
-					              $("#hasil").html(ajaxData);
-					          }
-					      });
-					  };
-				</script>
-
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/JQuery.min.js"></script>
+<script>
+	function tampil_data(act){
+		var w = $('#origin').val();
+		var x = $('#destination').val();
+		var y = $('#berat').val();
+		var z = $('#courier').val();
+		var a = $('#namapengirim').val();
+		var b = $('#kecamatan').val();
+		var c = $('#desa').val();
+		var d = $('#kodepos').val();
+		var e = $('#telp').val();
+
+		$.ajax({
+			url: "<?= base_url(); ?>user/rajaongkir/getCost",
+			type: "GET",
+			data : {
+			origin: w, 
+			destination: x, 
+			berat: y, 
+			courier: z, 
+			namapengirim: a, 
+			kecamatan:b, 
+			desa:c ,
+			kodepos:d, 
+			telp:e
+			},
+			success: function (ajaxData){
+				$("#hasil").html(ajaxData);
+			}
+		});
+	};
+</script>
 
 <script>
 $(document).ready(function(){
 
 	$("#propinsi_asal").click(function(){
-		$.post("<?php echo base_url(); ?>index.php/Keranjang/getCity/"+$('#propinsi_asal').val(),function(obj){
+		$.post("<?= base_url(); ?>user/keranjang/getCity/"+$('#propinsi_asal').val(),function(obj){
 			$('#origin').html(obj);
 		});
 			
 	});
 
 	$("#propinsi_tujuan").click(function(){
-		$.post("<?php echo base_url(); ?>index.php/Keranjang/getCity/"+$('#propinsi_tujuan').val(),function(obj){
+		$.post("<?php echo base_url(); ?>user/keranjang/getCity/"+$('#propinsi_tujuan').val(),function(obj){
 			$('#destination').html(obj);
 		});
 			
 	});
-
-	/*
-	$("#cari").click(function(){
-		$.post("<?php echo base_url(); ?>index.php/rajaongkir/getCost/"+$('#origin').val()+'&dest='+$('#destination').val()+'&berat='+$('#berat').val()+'&courier='+$('#courier').val(),function(obj){
-			$('#hasil').html(obj);
-		});
-	});
-
-	*/
-
-	
 });
-</script>
-<!-- Pop up -->
-<script type="text/javascript">
-  function confirm_alert(node) {
-      return confirm("Apakah anda yakin ingin mengosongkan keranjang?");
-  }
+
+function confirm_alert(node) {
+	return confirm("Apakah anda yakin ingin mengosongkan keranjang?");
+}
 </script>
 
 	

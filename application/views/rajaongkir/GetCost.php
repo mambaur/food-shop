@@ -25,22 +25,15 @@ curl_close($curl);
 if ($err) {
   echo "cURL Error #:" . $err;
 } else {
-  //echo $response;
   $data = json_decode($response, true);
-  //echo json_encode($k['rajaongkir']['results']);
-
-  /*
-  for ($k=0; $k < count($data['rajaongkir']['results']); $k++){
-  
-
-    echo "<li='".$data['rajaongkir']['results'][$k]['code']."'>".$data['rajaongkir']['results'][$k]['service']."</li>";
-  	//echo $data['rajaongkir']['results'][$k]['code'];
-  }
-  */
-  //echo $data['rajaongkir']['results']['costs']['service'];
 }
 ?>
 
+<?= '
+	<h4>Daftar harga pengiriman</h4>
+	<div style="border: 1px solid #F0F0E9;height: 300px;">
+		<ol>
+' ?>
 
 <?php echo $data['rajaongkir']['origin_details']['city_name'];?> ke <?php echo $data['rajaongkir']['destination_details']['city_name'];?> @<?php echo $berat;?>gram Kurir : <?php echo strtoupper($courier); ?>
 
@@ -61,17 +54,17 @@ if ($err) {
 			 for ($l=0; $l < count($data['rajaongkir']['results'][$k]['costs']); $l++) {			 
 			 ?>
 			 <tr>
-				 <td><?php echo $l+1;?></td>
-				 <td>
+				<td><?php echo $l+1;?></td>
+				<td>
 					 <div style="font:bold 16px Arial"><?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['service'];?></div>
 					 <div style="font:normal 11px Arial"><?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['description'];?></div>
-				 </td>
-				 <td align="center">&nbsp;<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['etd'];?> days</td>
+				</td>
+				<td align="center">&nbsp;<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['etd'];?> days</td>
 				 <td align="right">
 
 				 	<?php echo number_format($data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['value']);?><input type="hidden" name="h_ongkir" value="<?php echo number_format($data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['value']); ?>"></td>
-				 <td>
-				 	<form action="<?php echo base_url('Pesanan/data'); ?>" method="post">
+				<td>
+				 	<form action="<?php echo base_url('user/pesanan/data'); ?>" method="post">
 					 	<input type="hidden" name="namapengirim" value="<?php echo $namapengirim; ?>">
 					 	<input type="hidden" name="kurir" value="<?php echo $courier; ?>">
 					 	<input type="hidden" name="harga" value="<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['value']; ?>">
@@ -83,8 +76,8 @@ if ($err) {
 					 	<input type="hidden" name="telp" value="<?php echo $telp; ?>">
 					 	<input type="hidden" name="layanan" value="<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['service']; ?>">
 					 	<button type="submit" class="btn btn-success">Pilih</button>
-				 	 </form>
-				 	<!-- <a href="<?php echo base_url('Pesanan/data/'.$courier.'/'.$data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['value'].'/'.$data['rajaongkir']['destination_details']['province'].'/'.$data['rajaongkir']['destination_details']['city_name'].'/'.$data['rajaongkir']['results'][$k]['costs'][$l]['service']); ?>">Pilih</a></td> -->
+				 	</form>
+				</td>
 			 </tr>
 			 <?php
 			 }
@@ -95,4 +88,9 @@ if ($err) {
  <?php
  }
  ?>
+
+ <?= '
+	</ol>
+	</div>
+ ' ?>
  

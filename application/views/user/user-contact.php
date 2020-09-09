@@ -9,7 +9,7 @@
 	    			<div class="contact-form">
 	    				<h2 class="title text-center">Hubungi Kami</h2>
 	    				<div class="status alert alert-success" style="display: none"></div>
-				    	<form action="<?php echo base_url('Contact/tambah_contact'); ?>" id="main-contact-form" class="contact-form row" name="contact-form" method="post">
+				    	<form action="<?php echo base_url('user/contact/tambah_contact'); ?>" id="main-contact-form" class="contact-form row" name="contact-form" method="post">
 				            <div class="form-group col-md-12">
 				                <input type="text" name="judul" class="form-control" required="required" placeholder="Judul">
 				            </div>

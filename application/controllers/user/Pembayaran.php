@@ -10,7 +10,7 @@ class Pembayaran extends CI_Controller{
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
                 window.location.href = '".base_url('login')."';
-            </script>";//Url tujuan
+            </script>";
 		}
 	} 
 
@@ -21,10 +21,9 @@ class Pembayaran extends CI_Controller{
 		$this->load->view('element/footer');
 	}
 
-	function upload_image(){
-		$config['upload_path'] = './assets/images/'; //path folder
-	    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-	    // $config['encrypt_name'] = TRUE; //Enkripsi nama yang terupload
+	function insert(){
+		$config['upload_path'] = './assets/images/';
+	    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
 
 	    $this->upload->initialize($config);
 	    if(!empty($_FILES['filefoto']['name'])){
@@ -51,18 +50,16 @@ class Pembayaran extends CI_Controller{
 				$this->M_bukti->simpan_upload($id,$nama_pemilik,$bank,$gambar,$kode);
 				echo "<script>
 	                alert('Upload berhasil');
-	                window.location.href = '".base_url('user/user-pembayaran')."';
-	            </script>";//Url tujuan
+	                window.location.href = '".base_url('user/pembayaran')."';
+	            </script>";
 			}
 	                 
 	    }else{
 			echo "<script>
 	                alert('Upload gagal');
-	                window.location.href = '".base_url('user/user-pembayaran')."';
-	            </script>";//Url tujuan
-		}
-				
+	                window.location.href = '".base_url('user/pembayaran')."';
+	            </script>";
+		}		
 	}
-
 } 
 ?>
