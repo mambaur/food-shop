@@ -50,7 +50,7 @@
                             <center><a target="_blank" href="<?php echo base_url($a->bukti_pembayaran); ?>"><img src="<?php echo base_url($a->bukti_pembayaran); ?>"></a></center>
                           </td>
                           <td>
-                            <center><a onclick="return confirm_alert(this);" href="<?php echo base_url('Admin_controller/A_bukti/delete_bukti/'.$a->id_bayar); ?>"><button type="button" class="btn btn-danger">Hapus</button></a></center>
+                            <center><a onclick="return confirm_alert(this);" href="<?php echo base_url('admin/bukti/hapus_bukti/'.$a->id_bayar); ?>"><button type="button" class="btn btn-danger">Hapus</button></a></center>
                           </td>
                         </tr>
                         <?php } ?>

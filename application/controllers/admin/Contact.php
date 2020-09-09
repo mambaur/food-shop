@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class A_contact extends CI_Controller{
+class Contact extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();		
@@ -10,21 +10,21 @@ class A_contact extends CI_Controller{
 		if($this->session->userdata('admin') != "222"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
-                window.location.href = '".base_url('Admin_controller/A_login')."';
+                window.location.href = '".base_url('admin/login')."';
             </script>";//Url tujuan
 		}
 	}
 
 	function index(){
 		$data['tentang'] = $this->MA_contact->tampil_contact();
-		$this->load->view('element/Admin/Header_admin');
-		$this->load->view('Admin_view/VA_contact',$data);
-		$this->load->view('element/Admin/Footer_admin');
+		$this->load->view('element/admin/admin-header');
+		$this->load->view('admin/admin-contact',$data);
+		$this->load->view('element/admin/admin-footer');
 	}
-	public function delete_contact(){
+	public function hapus_contact(){
 		$idtentang = $this->uri->segment(4);
 		$this->MA_contact->delete($idtentang);
-		redirect('Admin_controller/A_contact');
+		redirect('admin/contact');
 	}
 } 
 ?>

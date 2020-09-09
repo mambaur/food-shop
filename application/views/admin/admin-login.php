@@ -35,7 +35,7 @@
       *********************************************************************************************************************************************************** -->
   <div id="login-page">
     <div class="container">
-      <form class="form-login" action="<?php echo base_url('Admin_controller/A_login/aksi_login'); ?>" method="post">
+      <form class="form-login" action="<?php echo base_url('admin/login/aksi_login'); ?>" method="post">
         <h2 class="form-login-heading" style="background-color: #E74C3C;">Login Admin</h2>
         <div class="login-wrap">
           <input type="text" class="form-control" placeholder="Email" name="email" required="required" autofocus>
@@ -44,15 +44,11 @@
           <label class="checkbox">
             <div style="padding-left: 20px;"><input type="checkbox" required="required" value="remember-me"></div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRemember me
             <span class="pull-right">
-            <!-- <a data-toggle="modal" href=""> Forgot Password?</a> -->
             </span>
             </label>
           <button style="background-color: #E74C3C;color: white;" class="btn btn-block" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
           <hr>
           <div class="login-social-link centered">
-            <!-- <p>or you can sign in via your social network</p>
-            <button class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</button>
-            <button class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</button> -->
           </div>
           <div class="registration">
             Belum punya akun?<br/>

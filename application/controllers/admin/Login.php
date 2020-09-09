@@ -1,22 +1,22 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class A_login extends CI_Controller{
+class Login extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();		
 		$this->load->model('M_login');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('admin') == "222"){
-			redirect('Admin_controller/Beranda','refresh');
+			redirect('admin/beranda','refresh');
 		}else if ($this->session->userdata('owner') == "333") {
-			redirect('Owner_controller/Beranda','refresh');
+			redirect('Owner_controller/beranda','refresh');
 		}
  
 	}
 
 	function index(){
-		$this->load->view('Admin_view/VA_login');
+		$this->load->view('admin/admin-login');
 	}
 
 	function aksi_login(){
@@ -49,7 +49,7 @@ class A_login extends CI_Controller{
  
 			$this->session->set_userdata($data_session);
  
-			redirect('Admin_controller/Beranda');
+			redirect('admin/beranda');
  
 		}else if ($cek2 > 0) {
 			$data_session = array(
@@ -65,8 +65,8 @@ class A_login extends CI_Controller{
 		}else{
 			echo "<script>
                 alert('Username dan password salah');
-                window.location.href = '".base_url('Admin_controller/A_login')."';
-            </script>";//Url tujuan
+                window.location.href = '".base_url('admin/login')."';
+            </script>";
 		}
 	}
 } 

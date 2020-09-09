@@ -79,7 +79,6 @@
 				</div>        
 				<div class="form-group col-md-12">
 					<input type="submit" name="submit" class="btn btn-primary" value="Submit">
-					<a href="<?php echo base_url('Produk'); ?>"><button type="button" value="batal" class="btn btn-primary">Batal</button></a>
 				</div>
 			</form>
 		</div>
@@ -92,7 +91,7 @@
         <!-- Modal content -->
         <div class="modal-content">
           <span class="close">&times;</span>
-          <form action="<?php echo base_url('Admin_controller/Beranda/tambahstok') ?>" method="post">
+          <form action="<?php echo base_url('admin/produk/tambahstok') ?>" method="post">
             <input type="text" name="id_produk" placeholder="#Id Produk" required="required">
             <input type="number" min="1" name="tambahstok" placeholder="Jumlah stok" required="required">
           <button class="btn btn-primary">Tambah</button>

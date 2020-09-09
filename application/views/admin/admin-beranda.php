@@ -97,7 +97,7 @@
                 <div class="card-body">
                   <h3 class="card-title">Daftar pesanan pelanggan 
                     <div style="float: right;margin-right: 30px;">
-                      <form action="<?php echo base_url('Admin_controller/Beranda/cari'); ?>" method="post">
+                      <form action="<?php echo base_url('admin/beranda/cari'); ?>" method="post">
                         <input style="height: 25px;" type="text" name="cari" placeholder="#Kode pesan" required="required">
                         <button type="submit" style="height: 25px">Cari</button>
                       </form>
@@ -142,7 +142,7 @@
                           <td>
                               <?php 
                               if ($a->status=='Proses') {
-                                echo '<a onclick="return confirm_alert(this);" href="'.base_url('Admin_controller/Beranda/status/'.$a->id_pesan).'"><button type="button" class="btn">'.$a->status.'</button></a>';
+                                echo '<a onclick="return confirm_alert(this);" href="'.base_url('admin/beranda/status/'.$a->id_pesan).'"><button type="button" class="btn">'.$a->status.'</button></a>';
                               }elseif ($a->status=='Batal') {
                                 echo '<button type="button" class="btn btn-danger">'.$a->status.'</button>';
                               }else{
@@ -151,7 +151,7 @@
                               ?>
                           </td>
                           <td>
-                            <form target="_blank" action="<?php echo base_url('Admin_controller/Beranda/detail_transaksi'); ?>" method="post">
+                            <form target="_blank" action="<?php echo base_url('admin/beranda/detail'); ?>" method="post">
                                 <input type="hidden" name="idpesan" value="<?php echo $a->id_pesan;?>">
                                 <input type="hidden" name="harga_kirim" value="<?php echo $a->harga_kirim;?>">
                                 <input type="hidden" name="total_pesan" value="<?php echo $a->total_pesan;?>">
@@ -160,7 +160,7 @@
                                 <input type="hidden" name="status" value="<?php echo $a->status; ?>">
                                 <button type="submit" class="btn btn-primary">Lihat detail transaksi</button>
                             </form><br>
-                            <a target="_blank" href="<?php echo base_url('Admin_controller/Beranda/datapengiriman/'.$a->id_kirim); ?>">Lihat data pengiriman</a>
+                            <a target="_blank" href="<?php echo base_url('admin/beranda/pengiriman/'.$a->id_kirim); ?>">Lihat data pengiriman</a>
                             
                           </td>
                         </tr>
@@ -172,13 +172,9 @@
               </div>
             </div>
           </div>
-
-
-         
         </div>
         <!-- content-wrapper ends -->
-        <script type="text/javascript">
-    
+<script type="text/javascript">
     var rupiah = document.getElementById('rupiah');
     rupiah.addEventListener('keyup', function(e){
       // tambahkan 'Rp.' pada saat form di ketik
@@ -203,7 +199,7 @@
       rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
       return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
     }
-  </script>
+</script>
 
 <!-- Pop up -->
 <script type="text/javascript">

@@ -4,7 +4,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Halaman Admin E-market</title>
+  <title>Halaman Admin Purnamajati</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="<?php echo base_url('assets/admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css'); ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/admin/vendors/css/vendor.bundle.base.css'); ?>">
@@ -23,10 +23,10 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="<?php echo base_url('Admin_controller/Beranda'); ?>">
+        <a class="navbar-brand brand-logo" href="<?php echo base_url('admin/beranda'); ?>">
           <img style="width: 139px;height: 39px;" src="<?php echo base_url('assets/images/home/logo.png'); ?>" alt="logo" />
         </a>
-        <a class="navbar-brand brand-logo-mini" href="<?php echo base_url('Admin_controller/Beranda'); ?>">
+        <a class="navbar-brand brand-logo-mini" href="<?php echo base_url('admin/beranda'); ?>">
           <img src="<?php echo base_url('assets/admin/images/logo-mini.svg'); ?>" alt="logo" />
         </a>
       </div>
@@ -56,27 +56,9 @@
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <a class="dropdown-item p-0">
                 <div class="d-flex border-bottom">
-                 <!--  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
-                    <i class="mdi mdi-account-outline mr-0 text-gray"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
-                  </div> -->
                 </div>
               </a>
-              <!-- <a class="dropdown-item mt-2" href="">
-                Kelola akun
-              </a> -->
-              <!-- <a class="dropdown-item">
-                Change Password
-              </a>
-              <a class="dropdown-item">
-                Check Inbox
-              </a> -->
-              <a class="dropdown-item" href="<?php echo base_url('Admin_controller/A_logout') ?>">
+              <a class="dropdown-item" href="<?php echo base_url('admin/logout') ?>">
                 Keluar
               </a>
             </div>
@@ -105,43 +87,43 @@
                   </div>
                 </div>
               </div>
-              <a style="color: white;" href="<?php echo base_url('Produk'); ?>"><button class="btn btn-success btn-block">Tambah produk
+              <a style="color: white;" href="<?php echo base_url('admin/produk'); ?>"><button class="btn btn-success btn-block">Tambah produk
                 <i class="mdi mdi-plus"></i></a>
               </button>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('Admin_controller/Beranda'); ?>">
+            <a class="nav-link" href="<?php echo base_url('admin/beranda'); ?>">
               <i class="menu-icon mdi mdi-television"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('Admin_controller/A_user'); ?>">
+            <a class="nav-link" href="<?php echo base_url('admin/user'); ?>">
               <i class="menu-icon mdi mdi-account"></i>
               <span class="menu-title">Akun</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('Produk'); ?>">
+            <a class="nav-link" href="<?php echo base_url('admin/produk'); ?>">
               <i class="menu-icon mdi mdi-food"></i>
               <span class="menu-title">Produk</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('Admin_controller/A_kategori'); ?>">
+            <a class="nav-link" href="<?php echo base_url('admin/kategori'); ?>">
               <i class="menu-icon mdi mdi-shopping"></i>
               <span class="menu-title">Kategori</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('Admin_controller/A_bukti'); ?>">
+            <a class="nav-link" href="<?php echo base_url('admin/bukti'); ?>">
               <i class="menu-icon mdi mdi-file-document"></i>
               <span class="menu-title">Bukti pembayaran</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('Admin_controller/A_contact'); ?>">
+            <a class="nav-link" href="<?php echo base_url('admin/contact'); ?>">
               <i class="menu-icon mdi mdi-message-text"></i>
               <span class="menu-title">Kontak</span>
             </a>

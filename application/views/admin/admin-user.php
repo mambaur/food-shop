@@ -52,7 +52,7 @@
                             <?php echo $a->no_telp; ?>
                           </td>
                           <td>
-                            <center><a onclick="return confirm_alert(this);" href="<?php echo base_url('Admin_controller/A_user/hapus_user/'.$a->id_user); ?>"><button type="button" class="btn btn-danger"><i class="menu-icon mdi mdi-delete"></i> Hapus</button></a></center>
+                            <center><a onclick="return confirm_alert(this);" href="<?php echo base_url('admin/user/hapus/'.$a->id_user); ?>"><button type="button" class="btn btn-danger"><i class="menu-icon mdi mdi-delete"></i> Hapus</button></a></center>
                           </td>
                         </tr>
                         <?php } ?>

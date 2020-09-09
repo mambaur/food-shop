@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class A_kategori extends CI_Controller{
+class Kategori extends CI_Controller{
 	function __construct(){
 		parent::__construct();		
 		$this->load->model('Admin_models/MA_kategori');
@@ -9,16 +9,16 @@ class A_kategori extends CI_Controller{
 		if($this->session->userdata('admin') != "222"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
-                window.location.href = '".base_url('Admin_controller/A_login')."';
-            </script>";//Url tujuan
+                window.location.href = '".base_url('admin/login')."';
+            </script>";
 		}
 	}
 
 	function index(){
 		$data['kategori'] = $this->MA_kategori->tampil_kategori();
-		$this->load->view('element/Admin/Header_admin');
-		$this->load->view('Admin_view/VA_kategori',$data);
-		$this->load->view('element/Admin/Footer_admin');
+		$this->load->view('element/admin/admin-header');
+		$this->load->view('admin/admin-kategori',$data);
+		$this->load->view('element/admin/admin-footer');
 	}
 	public function tambah_kategori(){
 		$idkate = $this->MA_kategori->get_idkategori();
@@ -27,14 +27,14 @@ class A_kategori extends CI_Controller{
 		if ($cek >= 1){
 			echo "<script>
                 alert('Nama kategori sudah ada');
-                window.location.href = '".base_url('Admin_controller/A_kategori')."';
-            </script>";//Url tujuan
+                window.location.href = '".base_url('admin/kategori')."';
+            </script>";
 		}elseif ($cek == 0) {
 			$this->MA_kategori->tambah_kategori($idkate,$nama_kate);
 			echo "<script>
                 alert('Kategori berhasil ditambahkan');
-                window.location.href = '".base_url('Admin_controller/A_kategori')."';
-            </script>";//Url tujuan
+                window.location.href = '".base_url('admin/kategori')."';
+            </script>";
 		}
 		redirect('Admin_controller/A_kategori');
 	}
@@ -42,7 +42,7 @@ class A_kategori extends CI_Controller{
 	function hapus_kategori(){
 		$id_kategori= $this->uri->segment(4);
 		$this->MA_kategori->hapus_kate($id_kategori);
-		redirect('Admin_controller/A_kategori');
+		redirect('admin/kategori');
 	}
 } 
 ?>

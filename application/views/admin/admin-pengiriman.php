@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E-market - Data pengiriman</title>
+    <title>Purnamajati - Data pengiriman</title>
 
     <link href="<?php echo base_url('assets/css/font-awesome.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/all.min.css'); ?>" rel="stylesheet">

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class A_user extends CI_Controller{
+class User extends CI_Controller{
 	function __construct(){
 		parent::__construct();		
 		$this->load->model('Admin_models/MA_user');
@@ -9,8 +9,8 @@ class A_user extends CI_Controller{
 		if($this->session->userdata('admin') != "222"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
-                window.location.href = '".base_url('Admin_controller/A_login')."';
-            </script>";//Url tujuan
+                window.location.href = '".base_url('admin/login')."';
+            </script>";
 		}
 	}
 
@@ -18,7 +18,6 @@ class A_user extends CI_Controller{
 		$data = array();
 
 		// ----------------------Pagination---------------------------
-        // init params
         $params = array();
         $limit_per_page = 10;
         $page = ($this->uri->segment(4)) ? ($this->uri->segment(4) - 1) : 0;
@@ -29,7 +28,7 @@ class A_user extends CI_Controller{
             // get current page records
             $data["user"] = $this->MA_user->get_current_page_records($limit_per_page, $page*$limit_per_page);
                  
-            $config['base_url'] = base_url() . 'Admin_controller/A_user/index';
+            $config['base_url'] = base_url() . 'admin/user/index';
             $config['total_rows'] = $total_records;
             $config['per_page'] = $limit_per_page;
             $config["uri_segment"] = 4;
@@ -63,14 +62,14 @@ class A_user extends CI_Controller{
             // build paging links
             $data["links"] = $this->pagination->create_links();
         }
-		$this->load->view('element/Admin/Header_admin');
-		$this->load->view('Admin_view/VA_user',$data);
-		$this->load->view('element/Admin/Footer_admin');
+		$this->load->view('element/admin/admin-header');
+		$this->load->view('admin/admin-user',$data);
+		$this->load->view('element/admin/admin-footer');
 	}
-	function hapus_user(){
+	function hapus(){
 		$id_user= $this->uri->segment(4);
 		$this->MA_user->hapus_user($id_user);
-		redirect('Admin_controller/A_user');
+		redirect('admin/admin-user');
 	}
 } 
 ?>

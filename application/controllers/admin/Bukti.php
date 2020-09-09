@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class A_bukti extends CI_Controller{
+class Bukti extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();		
@@ -10,22 +10,22 @@ class A_bukti extends CI_Controller{
 		if($this->session->userdata('admin') != "222"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
-                window.location.href = '".base_url('Admin_controller/A_login')."';
-            </script>";//Url tujuan
+                window.location.href = '".base_url('admin/login')."';
+            </script>";
 		}
 	}
 
 	function index(){
 		$data['bukti'] = $this->MA_bukti->tampil_bukti();
-		$this->load->view('element/Admin/Header_admin');
-		$this->load->view('Admin_view/VA_bukti',$data);
-		$this->load->view('element/Admin/Footer_admin');
+		$this->load->view('element/admin/admin-header');
+		$this->load->view('admin/admin-bukti',$data);
+		$this->load->view('element/admin/admin-footer');
 	}
 
-	public function delete_bukti(){
+	public function hapus_bukti(){
 		$idbukti = $this->uri->segment(4);
 		$this->MA_bukti->hapus_bukti($idbukti);
-		redirect('Admin_controller/A_bukti');
+		redirect('admin/admin-bukti');
 	}
 } 
 ?>
