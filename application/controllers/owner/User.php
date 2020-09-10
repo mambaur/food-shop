@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class A_user extends CI_Controller{
+class User extends CI_Controller{
 	function __construct(){
 		parent::__construct();		
 		$this->load->model('Admin_models/MA_user');
@@ -9,7 +9,7 @@ class A_user extends CI_Controller{
 		if($this->session->userdata('owner') != "333"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
-                window.location.href = '".base_url('Admin_controller/A_login')."';
+                window.location.href = '".base_url('admin/login')."';
             </script>";//Url tujuan
 		}
 	}
@@ -29,7 +29,7 @@ class A_user extends CI_Controller{
             // get current page records
             $data["user"] = $this->MA_user->get_current_page_records($limit_per_page, $page*$limit_per_page);
                  
-            $config['base_url'] = base_url() . 'Owner_controller/A_user/index';
+            $config['base_url'] = base_url() . 'owner/user/index';
             $config['total_rows'] = $total_records;
             $config['per_page'] = $limit_per_page;
             $config["uri_segment"] = 4;
@@ -64,14 +64,14 @@ class A_user extends CI_Controller{
             $data["links"] = $this->pagination->create_links();
         }
 
-		$this->load->view('element/Owner/Header_owner');
-		$this->load->view('Owner_view/VA_user',$data);
-		$this->load->view('element/Owner/Footer_owner');
+		$this->load->view('element/owner/owner-header');
+		$this->load->view('owner/owner-user',$data);
+		$this->load->view('element/owner/owner-footer');
 	}
 	function hapus_user(){
 		$id_user= $this->uri->segment(4);
 		$this->MA_user->hapus_user($id_user);
-		redirect('Owner_controller/A_user');
+		redirect('owner/user');
 	}
 } 
 ?>

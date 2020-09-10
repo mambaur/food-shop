@@ -4,8 +4,8 @@
             <div class="col-lg-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h2 style="color: #1E7BCB;">Daftar Pengguna</h2><br>
-                  <a href="<?php echo base_url('Owner_controller/O_user/tambahuser'); ?>"><button class="btn btn-success">Tambah pegawai</button></a>
+                  <h2 style="color: #1E7BCB;">Daftar Pegawai (admin)</h2><br>
+                  <a href="<?php echo base_url('owner/admin/tambahuser'); ?>"><button class="btn btn-success">Tambah pegawai</button></a>
                   <div class="table-responsive"><br>
                     <table class="table table-bordered">
                       <thead>
@@ -49,8 +49,8 @@
                             <?php echo $a->no_telp; ?>
                           </td>
                           <td>
-                            <center><a href="<?php echo base_url('Owner_controller/O_user/edituser/'.$a->id_user); ?>"><button type="button" class="btn btn-primary"><i class="menu-icon mdi mdi-pen"></i> Edit</button></a>
-                              <a onclick="return confirm_alert(this);" href="<?php echo base_url('Owner_controller/O_user/hapus_user/'.$a->id_user); ?>"><button type="button" class="btn btn-danger"><i class="menu-icon mdi mdi-delete"></i> Hapus</button></a>
+                            <center><a href="<?php echo base_url('owner/admin/edituser/'.$a->id_user); ?>"><button type="button" class="btn btn-primary"><i class="menu-icon mdi mdi-pen"></i> Edit</button></a>
+                              <a onclick="return confirm_alert(this);" href="<?php echo base_url('owner/admin/hapus_user/'.$a->id_user); ?>"><button type="button" class="btn btn-danger"><i class="menu-icon mdi mdi-delete"></i> Hapus</button></a>
                             </center>
 
                           </td>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class A_kategori extends CI_Controller{
+class Kategori extends CI_Controller{
 	function __construct(){
 		parent::__construct();		
 		$this->load->model('Admin_models/MA_kategori');

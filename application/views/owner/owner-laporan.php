@@ -6,8 +6,7 @@
               <div class="card">
                 <div class="card-body">
                 	<div style="text-align:justify;">
-                		<img src="<?php echo base_url('assets/purnamajati.png'); ?>" style="float:left; margin:0 20px 4px 0; width:10%" />
-                		<!-- <img src="<?php echo base_url('assets/images/Emarket2.png'); ?>" style="float:right; margin:0 20px 4px 0; width:10%" /> -->
+                		<img src="<?= base_url('assets/purnamajati.png'); ?>" style="float:left; margin:0 20px 4px 0; width:10%" />
                 		
                 		<h3>Laporan Penjualan<br>Makanan oleh-oleh khas Jember Purnamajati</h3>
 					  	<p>Jl. Bungur No.09, Darwo Timur - Gebang - Patrang - Kabupaten Jember</p>
@@ -20,7 +19,7 @@
 					  echo date('d-m-Y'); ?></p>
 					  <br>
 					  <div style="float: right;padding-left: 100px;">
-					  	<form action="<?php echo base_url('Owner_controller/O_laporan/sort'); ?>" method="post">
+					  	<form action="<?= base_url('Owner_controller/O_laporan/sort'); ?>" method="post">
 					  		Sort by :
 						  <select name="bulan" style="height: 30px;" required="required">
 						  	<option value="">-Pilih Bulan-</option>
@@ -54,10 +53,10 @@
 					    <tbody>
 					    <?php foreach($pesan as $a){ ?>
 					      <tr>
-					        <td><?php echo $a->id_pesan; ?></td>
-					        <td><?php echo $a->nama_user; ?></td>
-					        <td><?php echo $a->tanggal_pesan; ?></td>
-					        <td><?php echo $a->status; ?></td>
+					        <td><?= $a->id_pesan; ?></td>
+					        <td><?= $a->nama_user; ?></td>
+					        <td><?= $a->tanggal_pesan; ?></td>
+					        <td><?= $a->status; ?></td>
 					        <td>Rp <?php $format_indonesia = number_format ($a->total_pesan, 0, ',', '.');
                           echo $format_indonesia; ?></td>
 					      </tr>

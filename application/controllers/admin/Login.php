@@ -10,7 +10,7 @@ class Login extends CI_Controller{
 		if($this->session->userdata('admin') == "222"){
 			redirect('admin/beranda','refresh');
 		}else if ($this->session->userdata('owner') == "333") {
-			redirect('Owner_controller/beranda','refresh');
+			redirect('owner/beranda','refresh');
 		}
  
 	}
@@ -61,10 +61,10 @@ class Login extends CI_Controller{
  
 			$this->session->set_userdata($data_session);
  
-			redirect('Owner_controller/Beranda');
+			redirect('owner/beranda');
 		}else{
 			echo "<script>
-                alert('Username dan password salah');
+                alert('Mohon periksa kembali username atau password anda');
                 window.location.href = '".base_url('admin/login')."';
             </script>";
 		}

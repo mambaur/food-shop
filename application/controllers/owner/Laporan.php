@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class O_laporan extends CI_Controller{
+class Laporan extends CI_Controller{
 	function __construct(){
 		parent::__construct();		
 		$this->load->model('Owner_models/MO_transaksi');
@@ -9,8 +9,8 @@ class O_laporan extends CI_Controller{
 		if($this->session->userdata('owner') != "333"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
-                window.location.href = '".base_url('Admin_controller/A_login')."';
-            </script>";//Url tujuan
+                window.location.href = '".base_url('admin/login')."';
+            </script>";
 		}
 	}
 
@@ -18,9 +18,9 @@ class O_laporan extends CI_Controller{
 		$data['total'] = $this->MO_transaksi->totalPemasukan();
 		$data['keranjang'] = $this->db->query("SELECT * FROM pesan JOIN keranjang ON pesan.id_pesan=keranjang.pesan_id_pesan")->num_rows();
 		$data['pesan'] = $this->MO_transaksi->tampil_pesan();
-		$this->load->view('element/Owner/Header_owner');
-		$this->load->view('Owner_view/VO_laporan',$data);
-		$this->load->view('element/Owner/Footer_owner');
+		$this->load->view('element/owner/owner-header');
+		$this->load->view('owner/owner-laporan',$data);
+		$this->load->view('element/owner/owner-footer');
 	}
 
 	public function sort(){

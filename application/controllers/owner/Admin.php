@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class O_user extends CI_Controller{
+class Admin extends CI_Controller{
 	function __construct(){
 		parent::__construct();		
 		$this->load->model('Owner_models/MO_user');
@@ -9,30 +9,31 @@ class O_user extends CI_Controller{
 		if($this->session->userdata('owner') != "333"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
-                window.location.href = '".base_url('Admin_controller/A_login')."';
+                window.location.href = '".base_url('admin/login')."';
             </script>";//Url tujuan
 		}
 	}
 
 	function index(){
 		$data['user'] = $this->MO_user->tampil_user();
-		$this->load->view('element/Owner/Header_owner');
-		$this->load->view('Owner_view/VO_user',$data);
-		$this->load->view('element/Owner/Footer_owner');
+		$this->load->view('element/owner/owner-header');
+		$this->load->view('owner/owner-admin',$data);
+		$this->load->view('element/owner/owner-footer');
 	}
 
 	function tambahuser(){
-		$this->load->view('element/Owner/Header_owner');
-		$this->load->view('Owner_view/VO_tambahuser');
-		$this->load->view('element/Owner/Footer_owner');
+		$this->load->view('element/owner/owner-header');
+		$this->load->view('owner/owner-tambah-admin');
+		$this->load->view('element/owner/owner-footer');
 	}
+
 	function insertpegawai(){
 		$email = $this->input->post('email');
 		$cek = $cek = $this->db->query("SELECT * FROM user WHERE email='$email'")->num_rows();
 		if ($cek>=1) {
 			echo "<script>
                 alert('User sudah digunakan');
-                window.location.href = '".base_url('Owner_controller/O_user')."';
+                window.location.href = '".base_url('owner/admin')."';
             </script>";//Url tujuan
 		}else {
 			$idpeg = $this->MO_user->get_idpegawai();
@@ -45,16 +46,16 @@ class O_user extends CI_Controller{
 			$this->MO_user->insert_peg($idpeg,$nama,$email,$telp,$password,$alamat,$kodepos,$level);
 			echo "<script>
                 alert('Tambah pegawai berhasil');
-                window.location.href = '".base_url('Owner_controller/O_user')."';
+                window.location.href = '".base_url('owner/admin')."';
             </script>";//Url tujuan
 		}
 	}
 	function edituser(){
 		$iduser = $this->uri->segment(4);
 		$data['user'] = $this->MO_user->tampil($iduser);
-		$this->load->view('element/Owner/Header_owner');
-		$this->load->view('Owner_view/VO_edituser',$data);
-		$this->load->view('element/Owner/Footer_owner');
+		$this->load->view('element/owner/owner-header');
+		$this->load->view('owner/owner-edit-admin',$data);
+		$this->load->view('element/owner/owner-footer');
 	}
 	function editpegawai(){
 		$email = $this->input->post('email');
@@ -68,7 +69,7 @@ class O_user extends CI_Controller{
 			$this->MO_user->update_peg($idpeg,$nama,$email,$telp,$password,$alamat,$kodepos,$level);
 			echo "<script>
                 alert('Edit pegawai berhasil');
-                window.location.href = '".base_url('Owner_controller/O_user')."';
+                window.location.href = '".base_url('owner/admin')."';
             </script>";//Url tujuan
 
 	}
@@ -76,7 +77,7 @@ class O_user extends CI_Controller{
 	function hapus_user(){
 		$id_user= $this->uri->segment(4);
 		$this->MO_user->hapus_user($id_user);
-		redirect('Owner_controller/O_user');
+		redirect('owner/admin');
 	}
 } 
 ?>

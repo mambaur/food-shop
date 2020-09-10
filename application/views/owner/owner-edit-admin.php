@@ -6,7 +6,7 @@
                 <div class="card-body">
                   <?php foreach ($user as $a) {?>
                   <h4 style="color: #1E7BCB;">Edit Pegawai</h4><br>
-                  <form action="<?php echo base_url('Owner_controller/O_user/editpegawai/'.$a->id_user); ?>" method="post">
+                  <form action="<?php echo base_url('owner/admin/editpegawai/'.$a->id_user); ?>" method="post">
                     <input style="width: 50%;" class="form-control" type="text" name="nama" value="<?php echo $a->nama_user; ?>"><br>
                     <input style="width: 50%;" class="form-control" type="email" name="email" value="<?php echo $a->email; ?>"><br>
                     <input style="width: 50%;" class="form-control" type="password" name="password" value="<?php echo $a->password; ?>"><br>
@@ -22,7 +22,5 @@
               </div>
             </div>
           </div>
-
-
         </div>
         <!-- content-wrapper ends -->

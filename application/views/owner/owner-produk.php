@@ -36,7 +36,7 @@
 	<div class="row">
 		<div class="col-sm-4 col-sm-offset-1" style="background-color: white;padding:20px;">
 			<h2 class="text-gray">Tambah Produk</h2><br>
-			<form action="<?php echo base_url('Owner_controller/O_produk/insert_produk'); ?>" id="main-contact-form" class="contact-form row" name="contact-form" method="post" enctype="multipart/form-data">
+			<form action="<?= base_url('owner/produk/insert_produk'); ?>" id="main-contact-form" class="contact-form row" name="contact-form" method="post" enctype="multipart/form-data">
 				<div class="form-group col-md-12">
 					Nama produk :
 					<input type="text" name="nama_produk" class="form-control" required="required" placeholder="Nama produk anda">
@@ -52,7 +52,7 @@
 					Kategori :
 					<select name="kategori" class="form-control">
 						<?php foreach($kategori as $a){?>
-						<?php echo "<option>".$a->nama_kategori."</option>"; ?>
+						<?= "<option>".$a->nama_kategori."</option>"; ?>
 						<?php } ?>
 					</select>
 				</div> 
@@ -75,7 +75,6 @@
 				<div class="form-group col-md-12">
 					Keterangan produk:
 					<textarea name="keterangan" required="required" class="form-control" rows="8" placeholder="Keterangan produk"></textarea>
-					<!-- <input type="textarea" name="keterangan" class="form-control" required="required" placeholder="Keterangan produk"> -->
 				</div>        
 				<div class="form-group col-md-12">
 					<input type="submit" name="submit" class="btn btn-primary" value="Submit">
@@ -92,7 +91,7 @@
         <!-- Modal content -->
         <div class="modal-content">
           <span class="close">&times;</span>
-          <form action="<?php echo base_url('Owner_controller/Beranda/tambahstok') ?>" method="post">
+          <form action="<?php echo base_url('owner/produk/tambahstok') ?>" method="post">
             <input type="text" name="id_produk" placeholder="#Id Produk" required="required">
             <input type="number" min="1" name="tambahstok" placeholder="Jumlah stok" required="required">
           <button class="btn btn-primary">Tambah</button>
@@ -140,8 +139,8 @@
                       	<?php foreach($produk as $b){?>
                         <tr>
                           <td>    
-                            <a href="<?php echo base_url('Owner_controller/O_produk/update_produk/'.$b->id_produk); ?>"><i class="menu-icon mdi mdi-pencil-box"></i> Edit</a><br><br>
-                            <a onclick="return confirm_alert(this);" href="<?php echo base_url('Owner_controller/O_produk/hapus_produk/'.$b->id_produk); ?>"><i class="menu-icon mdi mdi-delete"></i> Hapus</a>
+                            <a href="<?php echo base_url('owner/produk/update_produk/'.$b->id_produk); ?>"><i class="menu-icon mdi mdi-pencil-box"></i> Edit</a><br><br>
+                            <a onclick="return confirm_alert(this);" href="<?php echo base_url('owner/produk/hapus_produk/'.$b->id_produk); ?>"><i class="menu-icon mdi mdi-delete"></i> Hapus</a>
                           </td>
                           <td class="font-weight-medium">
                           	<a target="_blank" href="<?php echo base_url($b->gambar); ?>"><img src="<?php echo base_url($b->gambar); ?>"></a>
