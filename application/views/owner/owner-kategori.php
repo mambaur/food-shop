@@ -6,7 +6,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 style="color: #1E7BCB;">Tambah Kategori</h4><br>
-                  <form action="<?php echo base_url('Owner_controller/A_kategori/tambah_kategori'); ?>" id="main-contact-form" class="contact-form row" name="contact-form" method="post" enctype="multipart/form-data">
+                  <form action="<?php echo base_url('owner/kategori/tambah_kategori'); ?>" id="main-contact-form" class="contact-form row" name="contact-form" method="post" enctype="multipart/form-data">
                     <div class="form-group col-md-12">
                       <input type="text" name="nama_kategori" style="width: 50%;" class="form-control" required="required" placeholder="Nama kategori">
                     </div>       
@@ -39,7 +39,7 @@
                             <?php echo $a->nama_kategori; ?>
                           </td>
                           <td>
-                            <center><a onclick="return confirm_alert(this);" href="<?php echo base_url('Owner_controller/A_kategori/hapus_kategori/'.$a->id_kategori); ?>"><button type="button" class="btn btn-danger"><i class="menu-icon mdi mdi-delete"></i> Hapus</button></a></center>
+                            <center><a onclick="return confirm_alert(this);" href="<?php echo base_url('owner/kategori/hapus_kategori/'.$a->id_kategori); ?>"><button type="button" class="btn btn-danger"><i class="menu-icon mdi mdi-delete"></i> Hapus</button></a></center>
                           </td>
                         </tr>
                         <?php } ?>

@@ -9,16 +9,16 @@ class Kategori extends CI_Controller{
 		if($this->session->userdata('owner') != "333"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
-                window.location.href = '".base_url('Admin_controller/A_login')."';
+                window.location.href = '".base_url('admin/login')."';
             </script>";//Url tujuan
 		}
 	}
 
 	function index(){
 		$data['kategori'] = $this->MA_kategori->tampil_kategori();
-		$this->load->view('element/Owner/Header_owner');
-		$this->load->view('Owner_view/VA_kategori',$data);
-		$this->load->view('element/Owner/Footer_owner');
+		$this->load->view('element/owner/owner-header');
+		$this->load->view('owner/owner-kategori',$data);
+		$this->load->view('element/owner/owner-footer');
 	}
 	public function tambah_kategori(){
 		$idkate = $this->MA_kategori->get_idkategori();
@@ -27,22 +27,22 @@ class Kategori extends CI_Controller{
 		if ($cek >= 1){
 			echo "<script>
                 alert('Nama kategori sudah ada');
-                window.location.href = '".base_url('Owner_controller/A_kategori')."';
+                window.location.href = '".base_url('owner/kategori')."';
             </script>";//Url tujuan
 		}elseif ($cek == 0) {
 			$this->MA_kategori->tambah_kategori($idkate,$nama_kate);
 			echo "<script>
                 alert('Kategori berhasil ditambahkan');
-                window.location.href = '".base_url('Owner_controller/A_kategori')."';
+                window.location.href = '".base_url('owner/kategori')."';
             </script>";//Url tujuan
 		}
-		redirect('Owner_controller/A_kategori');
+		redirect('owner/kategori');
 	}
 
 	function hapus_kategori(){
 		$id_kategori= $this->uri->segment(4);
 		$this->MA_kategori->hapus_kate($id_kategori);
-		redirect('Owner_controller/A_kategori');
+		redirect('owner/kategori');
 	}
 } 
 ?>

@@ -19,7 +19,7 @@
                           <div class="col-6 d-flex">
                             <small class="mb-0 mr-2 text-muted text-muted"><?php echo $a->email_tentang; ?></small>
                             <small class="mb-0 mr-2 text-muted text-muted col-12"><?php echo $a->tanggal; ?></small>
-                            <small class="mb-0 mr-2 text-muted text-muted"><a href="<?php echo base_url('Owner_controller/A_contact/delete_contact/'.$a->id_tentang); ?>">Delete</a></small>
+                            <small class="mb-0 mr-2 text-muted text-muted"><a href="<?php echo base_url('owner/contact/delete_contact/'.$a->id_tentang); ?>">Delete</a></small>
                             <!-- <small class="Last-responded mr-2 mb-0 text-muted text-muted">2 Days</small> -->
                           </div>
                         </div>

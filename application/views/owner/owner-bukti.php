@@ -35,22 +35,22 @@
                         <?php foreach ($bukti as $a) {?>
                         <tr>
                           <td class="font-weight-medium">
-                            <?php echo $a->id_bayar; ?>
+                            <?= $a->id_bayar; ?>
                           </td>
                           <td>
-                            <?php echo $a->kode_pesan; ?>
+                            <?= $a->kode_pesan; ?>
                           </td>
                           <td>
-                            <?php echo $a->nama_pemilik; ?>
+                            <?= $a->nama_pemilik; ?>
                           </td>
                           <td>
-                            <?php echo $a->bank; ?>
+                            <?= $a->bank; ?>
                           </td>
                           <td>
-                            <center><a target="_blank" href="<?php echo base_url($a->bukti_pembayaran); ?>"><img src="<?php echo base_url($a->bukti_pembayaran); ?>"></a></center>
+                            <center><a target="_blank" href="<?= base_url($a->bukti_pembayaran); ?>"><img src="<?= base_url($a->bukti_pembayaran); ?>"></a></center>
                           </td>
                           <td>
-                            <center><a onclick="return confirm_alert(this);" href="<?php echo base_url('Owner_controller/A_bukti/delete_bukti/'.$a->id_bayar); ?>"><button type="button" class="btn btn-danger">Hapus</button></a></center>
+                            <center><a onclick="return confirm_alert(this);" href="<?php echo base_url('owner/bukti/delete_bukti/'.$a->id_bayar); ?>"><button type="button" class="btn btn-danger">Hapus</button></a></center>
                           </td>
                         </tr>
                         <?php } ?>
