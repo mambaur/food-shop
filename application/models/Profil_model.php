@@ -1,6 +1,6 @@
 <?php 
  
-class M_profil extends CI_Model{
+class Profil_model extends CI_Model{
 	function user($iduser){
 		$query = $this->db->query("SELECT * FROM user WHERE id_user='$iduser'");
 		return $query->result();

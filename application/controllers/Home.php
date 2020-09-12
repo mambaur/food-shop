@@ -5,8 +5,8 @@ class Home extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('M_produk');		
-		$this->load->model('M_contact');
+		$this->load->model('Produk_model');		
+		$this->load->model('Contact_model');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('status') == "login"){
 			redirect('user','refresh');
@@ -15,15 +15,15 @@ class Home extends CI_Controller {
 
 	public function index(){
 		$data = array();
-		$data['data'] = $this->M_produk->tampil_kategori();
+		$data['data'] = $this->Produk_model->tampil_kategori();
         $params = array();
         $limit_per_page = 6;
         $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
-        $total_records = $this->M_produk->get_total();
+        $total_records = $this->Produk_model->get_total();
      
         if ($total_records > 0)
         {
-            $data["produk"] = $this->M_produk->get_current_page_records($limit_per_page, $page*$limit_per_page);
+            $data["produk"] = $this->Produk_model->get_current_page_records($limit_per_page, $page*$limit_per_page);
                  
             $config['base_url'] = base_url() . 'Home/index';
             $config['total_rows'] = $total_records;
@@ -67,8 +67,8 @@ class Home extends CI_Controller {
 	public function detail(){
 		$id = $this->input->get('id');
 		$data = [
-			'data' => $this->M_produk->tampil_kategori(),
-			'produk' => $this->M_produk->tampil_detailproduk($id)
+			'data' => $this->Produk_model->tampil_kategori(),
+			'produk' => $this->Produk_model->tampil_detailproduk($id)
 		];
 		$this->load->view('detail',$data);
 		$this->load->view('element/footer');
@@ -77,8 +77,8 @@ class Home extends CI_Controller {
 	public function kategori(){
 		$id = $this->input->get('id');
 		$data = [
-			'data' => $this->M_produk->tampil_kategori(),
-			'produk' => $this->M_produk->katprod($id)
+			'data' => $this->Produk_model->tampil_kategori(),
+			'produk' => $this->Produk_model->katprod($id)
 		];
 		$this->load->view('index',$data);
 		$this->load->view('element/footer');
@@ -101,7 +101,7 @@ class Home extends CI_Controller {
 		$pesan=$this->input->post('pesan');
 		$tgl=date('Y-m-d');
 
-		$this->M_contact->insert_contact($nama,$email,$judul,$pesan,$tgl);
+		$this->Contact_model->insert_contact($nama,$email,$judul,$pesan,$tgl);
 		$cek = $this->db->get_where('tentang', [
 			'nama_tentang' => $nama, 
 			'judul_tentang' => $judul, 

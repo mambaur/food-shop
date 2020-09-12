@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Beranda extends CI_Controller{
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('Owner_models/MO_transaksi');
+		$this->load->model('owner/Transaksi_owner');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('owner') != "333"){
 			echo "<script>
@@ -15,11 +15,11 @@ class Beranda extends CI_Controller{
 	}
 
 	public function index(){
-		$data['total'] = $this->MO_transaksi->totalPemasukan();
+		$data['total'] = $this->Transaksi_owner->totalPemasukan();
 		$data['order'] = $this->db->get("pesan")->num_rows();
 		$data['user'] = $this->db->get_where("user", ['level_id_level' => '111'])->num_rows();
 		$data['kontak'] = $this->db->get("tentang")->num_rows();
-		$data['pesan'] = $this->MO_transaksi->tampil_pesan();
+		$data['pesan'] = $this->Transaksi_owner->tampil_pesan();
 		$this->load->view('element/owner/owner-header',$data);
 		$this->load->view('owner/owner-beranda',$data);
 		$this->load->view('element/owner/owner-footer');
@@ -28,11 +28,11 @@ class Beranda extends CI_Controller{
 		$kodepesan=$this->input->post('cari');
 		$cek=$this->db->query("SELECT * FROM pesan JOIN pengiriman ON pesan.pengiriman_id_kirim=pengiriman.id_kirim JOIN user ON pesan.user_id_user=user.id_user WHERE id_pesan='$kodepesan' ORDER BY id_pesan DESC")->num_rows();
 		if ($cek>=1) {
-			$data['total'] = $this->MO_transaksi->totalPemasukan();
+			$data['total'] = $this->Transaksi_owner->totalPemasukan();
 			$data['order'] = $this->db->query("SELECT * FROM pesan")->num_rows();
 			$data['user'] = $this->db->query("SELECT * FROM user WHERE level_id_level='111'")->num_rows();
 			$data['kontak'] = $this->db->query("SELECT * FROM tentang")->num_rows();
-			$data['pesan'] = $this->MO_transaksi->tampil_pesanid($kodepesan);
+			$data['pesan'] = $this->Transaksi_owner->tampil_pesanid($kodepesan);
 			$this->load->view('element/owner/owner-header',$data);
 			$this->load->view('owner/owner-beranda',$data);
 			$this->load->view('element/owner/owner-footer');
@@ -47,7 +47,7 @@ class Beranda extends CI_Controller{
 
 	public function pengiriman(){
 		$idkirim = $this->uri->segment(4);
-		$data['kirim'] = $this->MO_transaksi->tampil_pengiriman($idkirim);
+		$data['kirim'] = $this->Transaksi_owner->tampil_pengiriman($idkirim);
 		$this->load->view('owner/owner-pengiriman',$data);
 	}
 
@@ -55,7 +55,7 @@ class Beranda extends CI_Controller{
 	public function status(){
 		$idpesan = $this->uri->segment(4);
 		$status = 'Terbayar';
-		$this->MO_transaksi->updatestatus($idpesan,$status);
+		$this->Transaksi_owner->updatestatus($idpesan,$status);
 		redirect('owner/beranda');
 	}
 
@@ -65,8 +65,8 @@ class Beranda extends CI_Controller{
 		$data['kodepos'] = $this->input->post("kode_pos");
 		$data['idpesan'] = $this->input->post('idpesan');
 		$idpesan2 =$this->input->post('idpesan');
-		$data['inv'] = $this->MO_transaksi->invoice($idpesan2,$iduser);
-		$data['inv2'] = $this->MO_transaksi->user($iduser);
+		$data['inv'] = $this->Transaksi_owner->invoice($idpesan2,$iduser);
+		$data['inv2'] = $this->Transaksi_owner->user($iduser);
 		$data['pengiriman'] = $this->input->post('harga_kirim');
 		$data['total2'] = $this->input->post('total_pesan');
 		$this->load->view('user/user-invoice',$data);

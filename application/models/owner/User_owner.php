@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class MO_user extends CI_Model {
+class User_owner extends CI_Model {
 
     function tampil_user(){
       $query = $this->db->query("SELECT * FROM user WHERE level_id_level='222'");

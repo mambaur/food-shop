@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Pembayaran extends CI_Controller{
 	function __construct(){
 		parent::__construct();
-		$this->load->model('M_bukti');
+		$this->load->model('Bukti_model');
 		$this->load->library('upload');
 		if($this->session->userdata('status') != "login"){
 			echo "<script>
@@ -15,7 +15,7 @@ class Pembayaran extends CI_Controller{
 	} 
 
 	function index(){
-		$data['gambar'] = $this->M_bukti->tampil_gambar();
+		$data['gambar'] = $this->Bukti_model->tampil_gambar();
 		$this->load->view('element/header');
 		$this->load->view('user/user-pembayaran',$data);
 		$this->load->view('element/footer');
@@ -42,12 +42,12 @@ class Pembayaran extends CI_Controller{
 	            $this->load->library('image_lib', $config);
 	            $this->image_lib->resize();
 
-	            $id = $this->M_bukti->get_idbayar();
+	            $id = $this->Bukti_model->get_idbayar();
 	            $nama_pemilik=$this->input->post('nama');
 	            $bank=$this->input->post('bank');
 	            $kode=$this->input->post('kode_pesan');
 	            $gambar='assets/images/'.$gbr['file_name'];
-				$this->M_bukti->simpan_upload($id,$nama_pemilik,$bank,$gambar,$kode);
+				$this->Bukti_model->simpan_upload($id,$nama_pemilik,$bank,$gambar,$kode);
 				echo "<script>
 	                alert('Upload berhasil');
 	                window.location.href = '".base_url('user/pembayaran')."';

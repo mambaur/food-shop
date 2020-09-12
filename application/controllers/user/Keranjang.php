@@ -5,21 +5,21 @@ class Keranjang extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('M_keranjang');
+		$this->load->model('Keranjang_model');
 		$this->load->library('cart');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('status') != "login"){
 			echo "<script>
                 alert('Anda harus login terlebih dahulu');
                 window.location.href = '".base_url('login')."';
-            </script>";//Url tujuan
+            </script>";
 
 		}
 	}
 
 	public function index(){
 		$user = $this->session->userdata("iduser");
-		$idpesan = $this->M_keranjang->get_idpesan();
+		$idpesan = $this->Keranjang_model->get_idpesan();
 		$this->load->view('element/Header');
 		$this->load->view('user/user-keranjang');
 		$this->load->view('element/Footer');
@@ -37,7 +37,7 @@ class Keranjang extends CI_Controller {
 							 'gambar' => $data['gambar'],
 							 'stok' => $data['stok'],
 							 'berat' => $data['berat'],
-							 'idpesan' => $this->M_keranjang->get_idpesan(),
+							 'idpesan' => $this->Keranjang_model->get_idpesan(),
 							 'qty' => $qty
 							);
 		$this->cart->insert($data_produk);
@@ -133,17 +133,6 @@ class Keranjang extends CI_Controller {
 		
 		$this->load->view('rajaongkir/GetCost', $data);
 	}
-
-	// function getResi()
-	// {
-	// 	$waybill = $this->input->get('waybill');
-
-	// 	$data = array('waybill' => $waybill
-
-	// 	);
-		
-	// 	$this->load->view('rajaongkir/GetResi', $data);
-	// }
 
 	function coba(){
 		$this->load->view('V_tabel');

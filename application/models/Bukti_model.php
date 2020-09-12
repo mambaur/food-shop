@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class M_bukti extends CI_Model {
+class Bukti_model extends CI_Model {
   // Fungsi untuk menampilkan semua data gambar
   function simpan_upload($id,$nama_pemilik,$bank,$gambar,$kode){
     $hasil=$this->db->query("INSERT INTO bayar(id_bayar,nama_pemilik,bank,bukti_pembayaran,kode_pesan) VALUES ('$id','$nama_pemilik','$bank','$gambar','$kode')");

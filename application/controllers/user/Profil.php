@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Profil extends CI_Controller {
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('M_profil');
+		$this->load->model('Profil_model');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('status') != "login"){
 			echo "<script>
@@ -16,7 +16,7 @@ class Profil extends CI_Controller {
 	}
 	public function index(){
 		$iduser = $this->session->userdata("iduser");
-		$data['user'] = $this->M_profil->user($iduser);
+		$data['user'] = $this->Profil_model->user($iduser);
 		$this->load->view('element/header');
 		$this->load->view('user/user-profil',$data);
 		$this->load->view('element/footer');
@@ -30,7 +30,7 @@ class Profil extends CI_Controller {
 		$telp = $this->input->post('telp');
 		$alamat = $this->input->post('alamat');
 		$kodepos = $this->input->post('kodepos');
-		$this->M_profil->update_user($iduser,$nama,$email,$pass,$telp,$alamat,$kodepos,$level);
+		$this->Profil_model->update_user($iduser,$nama,$email,$pass,$telp,$alamat,$kodepos,$level);
 		echo "<script>
                 alert('Data anda berhasil diperbarui');
                 window.location.href = '".base_url('user/profil')."';

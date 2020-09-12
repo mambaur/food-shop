@@ -1,5 +1,5 @@
 <?php 
-class MA_kategori extends CI_Model{
+class Kategori_admin extends CI_Model{
 	function tambah_kategori($idkate,$nama_kate){
 		$query = $this->db->query("INSERT INTO `kategori`(`id_kategori`, `nama_kategori`) VALUES ('$idkate','$nama_kate')");
 	}

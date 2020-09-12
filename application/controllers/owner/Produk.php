@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Produk extends CI_Controller {
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('M_produk');
+		$this->load->model('Produk');
 		$this->load->library('upload');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('owner') != "333"){
@@ -16,8 +16,8 @@ class Produk extends CI_Controller {
 	}
 
 	public function index(){
-		$data['kategori'] = $this->M_produk->tampil_kategori();
-		$data['produk'] = $this->M_produk->tampil_produk();
+		$data['kategori'] = $this->Produk->tampil_kategori();
+		$data['produk'] = $this->Produk->tampil_produk();
 		$this->load->view('element/owner/owner-header');
 		$this->load->view('owner/owner-produk',$data);
 		$this->load->view('element/owner/owner-footer');
@@ -44,19 +44,19 @@ class Produk extends CI_Controller {
 	            $this->load->library('image_lib', $config);
 	            $this->image_lib->resize();
 
-	            $idproduk = $this->M_produk->get_idproduk();
+	            $idproduk = $this->Produk->get_idproduk();
 				$nama_produk=$this->input->post('nama_produk');
 				$tanggal=$this->input->post('tanggal');
 				$keterangan=$this->input->post('keterangan');
 				$kategori=$this->input->post('kategori');
-				foreach($this->M_produk->namakat($kategori) as $row){
+				foreach($this->Produk->namakat($kategori) as $row){
 					$idkat=$row->id_kategori;
 				}
 				$stok=$this->input->post('stok');
 				$harga=$this->input->post('harga');
 				$berat = $this->input->post('berat');
 	            $gambar='assets/images/'.$gbr['file_name'];
-				$this->M_produk->tambah_produk($idproduk,$nama_produk,$tanggal,$keterangan,$idkat,$stok,$harga,$gambar,$berat);
+				$this->Produk->tambah_produk($idproduk,$nama_produk,$tanggal,$keterangan,$idkat,$stok,$harga,$gambar,$berat);
 				echo "<script>
 	                alert('Upload berhasil');
 	                window.location.href = '".base_url('owner/produk')."';
@@ -79,15 +79,15 @@ class Produk extends CI_Controller {
 
 	function hapus_produk(){
 		$id_produk= $this->uri->segment(4);
-		$this->M_produk->hapus_produk($id_produk);
+		$this->Produk->hapus_produk($id_produk);
 		redirect('owner/produk');
 	}
 
 	function update_produk(){
 		$id_produk= $this->uri->segment(4);
-		$data['kategori'] = $this->M_produk->tampil_kategori();
-		$data['produk'] = $this->M_produk->tampil_produk();
-		$data['produk2'] = $this->M_produk->tampil_produk2($id_produk);
+		$data['kategori'] = $this->Produk->tampil_kategori();
+		$data['produk'] = $this->Produk->tampil_produk();
+		$data['produk2'] = $this->Produk->tampil_produk2($id_produk);
 		$this->load->view('element/owner/owner-header');
 		$this->load->view('owner/owner-edit-produk',$data);
 		$this->load->view('element/owner/owner-footer');
@@ -97,7 +97,7 @@ class Produk extends CI_Controller {
 		$id_produk= $this->uri->segment(4);
 		$nama_produk=$this->input->post('nama_produk');
 		$kategori=$this->input->post('kategori');
-		foreach($this->M_produk->namakat($kategori) as $row){
+		foreach($this->Produk->namakat($kategori) as $row){
 			$idkat=$row->id_kategori;
 		}
 		$tanggal=$this->input->post('tanggal');
@@ -105,7 +105,7 @@ class Produk extends CI_Controller {
 		$stok=$this->input->post('stok');
 		$harga=$this->input->post('harga');
 		$berat = $this->input->post('berat');
-		$this->M_produk->update_produk($id_produk,$nama_produk,$tanggal,$keterangan,$kategori,$stok,$harga,$idkat,$berat);
+		$this->Produk->update_produk($id_produk,$nama_produk,$tanggal,$keterangan,$kategori,$stok,$harga,$idkat,$berat);
 		echo "<script>
 			alert('Edit produk berhasil');
 			window.location.href = '".base_url('owner/produk')."';

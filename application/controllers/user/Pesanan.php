@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Pesanan extends CI_Controller {
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('M_pesanan');
+		$this->load->model('Pesanan_model');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('status') != "login"){
 			echo "<script>
@@ -61,7 +61,7 @@ class Pesanan extends CI_Controller {
 		$jatuh_tempo=date('Y-m-d H:i:s',strtotime('+5 hours'));
 		$status = 'Proses';
 		$total_pesan = $this->input->post('total_pesan');
-		$kirim = $this->M_pesanan->get_idkirim();
+		$kirim = $this->Pesanan_model->get_idkirim();
 		$provinsi = $this->input->post('provinsi');
 		$kota = $this->input->post('kota');
 		$namapengirim = $this->input->post('namapengirim');
@@ -84,9 +84,9 @@ class Pesanan extends CI_Controller {
 				$this->db->query("UPDATE `produk` SET `stok`=stok-'$qty' WHERE id_produk='$id'");
 			}
 		}
-		$this->M_pesanan->insert_kirim($kirim,$provinsi,$kota,$layanan,$harga_kirim,$kurir,$namapengirim,$kecamatan,$desa,$kodepos,$telp);
+		$this->Pesanan_model->insert_kirim($kirim,$provinsi,$kota,$layanan,$harga_kirim,$kurir,$namapengirim,$kecamatan,$desa,$kodepos,$telp);
 
-		$this->M_pesanan->input_pesan($idpesan,$tgl,$status,$iduser,$kirim,$total_pesan,$jatuh_tempo);
+		$this->Pesanan_model->input_pesan($idpesan,$tgl,$status,$iduser,$kirim,$total_pesan,$jatuh_tempo);
 
 		if ($cart = $this->cart->contents())
 			{
@@ -98,7 +98,7 @@ class Pesanan extends CI_Controller {
 										'user_id_user' => $iduser,
 										'pesan_id_pesan' => $idpesan,
 										'berat_total' => $a['berat']*$a['qty']);
-						$this->M_pesanan->tambah_detail_keranjang($data_detail);
+						$this->Pesanan_model->tambah_detail_keranjang($data_detail);
 						
 					}
 			}

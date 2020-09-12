@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class MA_bukti extends CI_Model {
+class Bukti_admin extends CI_Model {
 
     function tampil_bukti(){
       $query = $this->db->query("SELECT * FROM bayar");

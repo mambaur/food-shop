@@ -1,6 +1,6 @@
 <?php 
  
-class M_login extends CI_Model{
+class Login_model extends CI_Model{
 	function cek_login($table,$where){		
 		return $this->db->get_where($table,$where);
 	}
@@ -8,7 +8,7 @@ class M_login extends CI_Model{
 		return $this->db->get_where($table,$where2);
 	}
 	function iduser($username){
-		$query = $this->db->query("SELECT * FROM user WHERE email='$username'");
+		$query = $this->db->get_where("user", ['email'=>$username]);
 		return $query->result();
 	}
 	function get_iduser(){

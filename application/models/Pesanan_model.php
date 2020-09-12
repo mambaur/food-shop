@@ -1,6 +1,6 @@
 <?php 
  
-class M_pesanan extends CI_Model{
+class Pesanan_model extends CI_Model{
 	
 	function tampil_barang($idpesan,$iduser){
 		$query = $this->db->query("SELECT * FROM keranjang JOIN produk ON keranjang.produk_id_produk=produk.id_produk WHERE pesan_id_pesan='$idpesan' AND user_id_user='$iduser'");

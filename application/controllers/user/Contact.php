@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Contact extends CI_Controller {
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('M_contact');
+		$this->load->model('Contact_model');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('status') != "login"){
 			echo "<script>
@@ -25,7 +25,7 @@ class Contact extends CI_Controller {
 		$judul=$this->input->post('judul');
 		$pesan=$this->input->post('pesan');
 		$tgl=date('Y-m-d');
-		$this->M_contact->insert_contact($nama,$email,$judul,$pesan,$tgl);
+		$this->Contact->insert_contact($nama,$email,$judul,$pesan,$tgl);
 		$cek = $this->db->query("SELECT * FROM tentang WHERE nama_tentang='$nama' AND judul_tentang='$judul' AND isi_pesan='$pesan'")->num_rows();
 		if ($cek >= 1){
 			echo "<script>

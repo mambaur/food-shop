@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller {
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('M_login');
+		$this->load->model('Login_model');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('status') == "login"){
 			redirect('user','refresh');
@@ -19,7 +19,7 @@ class Login extends CI_Controller {
 	function autentikasi(){
 		$username = $this->input->post('email');
 		$password = $this->input->post('password');
-		foreach($this->M_login->iduser($username) as $row){
+		foreach($this->Login_model->iduser($username) as $row){
 			$iduser=$row->id_user;
 			$namauser = $row->nama_user;
 			$level=$row->level_id_level;
@@ -28,7 +28,7 @@ class Login extends CI_Controller {
 			'email' => $username,
 			'password' => $password
 			);
-		$cek = $this->M_login->cek_login("user",$where)->num_rows();
+		$cek = $this->Login_model->cek_login("user",$where)->num_rows();
 		if($cek > 0){
 			$data_session = array(
 				'email' => $username,
@@ -51,7 +51,7 @@ class Login extends CI_Controller {
 	}
 
 	public function daftar(){
-		$iduser = $this->M_login->get_iduser();
+		$iduser = $this->Login_model->get_iduser();
 		$nama = $this->input->post('nama');
 		$telp = $this->input->post('telp');
 		$pass = $this->input->post('password');
@@ -64,8 +64,8 @@ class Login extends CI_Controller {
                 window.location.href = '".base_url('Login')."';
             </script>";//Url tujuan
 		}elseif ($cek == 0) {
-			$this->M_login->tambah_user($iduser,$nama,$pass,$username,$level,$telp);
-			foreach($this->M_login->iduser($username) as $row){
+			$this->Login_model->tambah_user($iduser,$nama,$pass,$username,$level,$telp);
+			foreach($this->Login_model->iduser($username) as $row){
 				$namauser = $row->nama_user;
 			}
 			$data_session = array(

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Transaksi extends CI_Controller {
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('M_transaksi');
+		$this->load->model('Transaksi_model');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('status') != "login"){
 			echo "<script>
@@ -16,7 +16,7 @@ class Transaksi extends CI_Controller {
 
 	public function index(){
 		$iduser = $this->session->userdata("iduser");
-		$data['pesan'] = $this->M_transaksi->tampil_pesan($iduser);
+		$data['pesan'] = $this->Transaksi_model->tampil_pesan($iduser);
 		$this->load->view('element/header');
 		$this->load->view('user/user-transaksi',$data);
 		$this->load->view('element/footer');
@@ -27,8 +27,8 @@ class Transaksi extends CI_Controller {
 		$data['kodepos'] = $this->input->post("kode_pos");
 		$data['idpesan'] = $this->input->post('id_pesan');
 		$idpesan2 =$this->input->post('id_pesan');
-		$data['inv'] = $this->M_transaksi->invoice($idpesan2,$iduser);
-		$data['inv2'] = $this->M_transaksi->user($iduser);
+		$data['inv'] = $this->Transaksi_model->invoice($idpesan2,$iduser);
+		$data['inv2'] = $this->Transaksi_model->user($iduser);
 		$data['pengiriman'] = $this->input->post('harga_kirim');
 		$data['total2'] = $this->input->post('total_pesan');
 		$this->load->view('user/user-invoice',$data);

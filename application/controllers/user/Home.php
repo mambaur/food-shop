@@ -5,7 +5,7 @@ class Home extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('M_produk');
+		$this->load->model('Produk_model');
 		$this->load->helper(array('url'));
 		$this->load->library('pagination');
 		if($this->session->userdata('status') != "login"){
@@ -18,19 +18,19 @@ class Home extends CI_Controller {
 
 	public function index(){
 		$data = array();
-		$data['data'] = $this->M_produk->tampil_kategori();
+		$data['data'] = $this->Produk_model->tampil_kategori();
 
 		// ----------------------Pagination---------------------------
         // init params
         $params = array();
 		$limit_per_page = 6;
         $page = ($this->uri->segment(4)) ? ($this->uri->segment(4) - 1) : 0;
-        $total_records = $this->M_produk->get_total();
+        $total_records = $this->Produk_model->get_total();
      
         if ($total_records > 0)
         {
             // get current page records
-            $data["produk"] = $this->M_produk->get_current_page_records($limit_per_page, $page*$limit_per_page);
+            $data["produk"] = $this->Produk_model->get_current_page_records($limit_per_page, $page*$limit_per_page);
                  
             $config['base_url'] = base_url() . 'user/home/index';
             $config['total_rows'] = $total_records;
@@ -76,18 +76,18 @@ class Home extends CI_Controller {
 	public function detail(){
 		$id = $this->input->get('id');
 		$data = [
-			'data' => $this->M_produk->tampil_kategori(),
+			'data' => $this->Produk_model->tampil_kategori(),
 			'produk' => $this->db->get_where('produk', ['id_produk' => $id])->row_array()
 		];
-		// $data['produk'] = $this->M_produk->tampil_detailproduk($id);
+		// $data['produk'] = $this->Produk_model->tampil_detailproduk($id);
 		$this->load->view('element/header');
 		$this->load->view('user/user-detail-produk',$data);
 		$this->load->view('element/footer');
 	}
 	public function kategori(){
 		$idk = $this->input->get('id');
-		$data['data'] = $this->M_produk->tampil_kategori();
-		$data['produk'] = $this->M_produk->katprod($idk);
+		$data['data'] = $this->Produk_model->tampil_kategori();
+		$data['produk'] = $this->Produk_model->katprod($idk);
 		$this->load->view('element/header');
 		$this->load->view('user/user-home',$data);
 		$this->load->view('element/footer');

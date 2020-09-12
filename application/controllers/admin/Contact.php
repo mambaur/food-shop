@@ -5,7 +5,7 @@ class Contact extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('Admin_models/MA_contact');
+		$this->load->model('admin/Contact_admin');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('admin') != "222"){
 			echo "<script>
@@ -16,14 +16,14 @@ class Contact extends CI_Controller{
 	}
 
 	function index(){
-		$data['tentang'] = $this->MA_contact->tampil_contact();
+		$data['tentang'] = $this->Contact_admin->tampil_contact();
 		$this->load->view('element/admin/admin-header');
 		$this->load->view('admin/admin-contact',$data);
 		$this->load->view('element/admin/admin-footer');
 	}
 	public function hapus_contact(){
 		$idtentang = $this->uri->segment(4);
-		$this->MA_contact->delete($idtentang);
+		$this->Contact_admin->delete($idtentang);
 		redirect('admin/contact');
 	}
 } 

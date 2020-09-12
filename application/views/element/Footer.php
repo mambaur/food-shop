@@ -8,14 +8,6 @@
 		<div class="footer-widget">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2>Pelayanan</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<img src="<?php echo base_url('assets/images/home/aaa.jpg'); ?>" class="girl img-responsive" alt="" />
-							</ul>
-						</div>
-					</div>
 					<div class="col-sm-3">
 						<div class="single-widget">
 							<h2>Sekilas</h2>
@@ -32,7 +24,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-2">
+					<div class="col-sm-3">
 						<div class="single-widget">
 							<h2>Info</h2>
 							<ul class="nav nav-pills nav-stacked">
@@ -41,7 +33,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-2">
+					<div class="col-sm-3">
 						<div class="single-widget">
 							<h2>Hubungi kami</h2>
 							<ul class="nav nav-pills nav-stacked">

@@ -26,25 +26,25 @@
 
 <body>
 	<header id="header"><!--header-->
-		<div class="header_top" style="background-color: #E74C3C;"><!--header_top #f76767-->
+		<div class="header_top"><!--header_top #f76767-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a style="color: white;" href="#"><i style="color: white;" class="fa fa-phone"></i> +6282234344953</a></li>
-								<li><a style="color: white;" href="#"><i style="color: white;" class="fa fa-envelope"></i> Purnamajati@gmail.com</a></li>
+								<li><a href="#"><i class="fa fa-phone"></i> +6282234344953</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> Purnamajati@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i style="color: white;" class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i style="color: white;" class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i style="color: white;" class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i style="color: white;" class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i style="color: white;" class="fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 							</ul>
 						</div>
 					</div>

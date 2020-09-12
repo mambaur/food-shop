@@ -5,7 +5,7 @@ class Login extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('M_login');
+		$this->load->model('Login_model');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('admin') == "222"){
 			redirect('admin/beranda','refresh');
@@ -22,7 +22,7 @@ class Login extends CI_Controller{
 	function aksi_login(){
 		$username = $this->input->post('email');
 		$password = $this->input->post('password');
-		foreach($this->M_login->iduser($username) as $row){
+		foreach($this->Login_model->iduser($username) as $row){
 			$iduser=$row->id_user;
 			$namauser = $row->nama_user;
 			$level = $row->level_id_level;
@@ -37,8 +37,8 @@ class Login extends CI_Controller{
 			'password' => $password,
 			'level_id_level' => 333
 			);
-		$cek = $this->M_login->cek_login("user",$where)->num_rows();
-		$cek2 = $this->M_login->cek_login2("user",$where2)->num_rows();
+		$cek = $this->Login_model->cek_login("user",$where)->num_rows();
+		$cek2 = $this->Login_model->cek_login2("user",$where2)->num_rows();
 		if($cek > 0){
 			$data_session = array(
 				'emailadmin' => $username,

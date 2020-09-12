@@ -1,11 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class MA_user extends CI_Model {
-
-    // function tampil_user(){
-    //   $query = $this->db->query("SELECT * FROM user WHERE level_id_level='111'");
-    //   return $query->result();
-    // }
+class User_admin extends CI_Model {
 
     public function get_current_page_records($limit, $start) 
     {

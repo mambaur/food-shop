@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends CI_Controller{
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('Admin_models/MA_user');
+		$this->load->model('admin/User_admin');
 		$this->load->helper(array('url'));
 		if($this->session->userdata('admin') != "222"){
 			echo "<script>
@@ -26,7 +26,7 @@ class User extends CI_Controller{
         if ($total_records > 0)
         {
             // get current page records
-            $data["user"] = $this->MA_user->get_current_page_records($limit_per_page, $page*$limit_per_page);
+            $data["user"] = $this->User_admin->get_current_page_records($limit_per_page, $page*$limit_per_page);
                  
             $config['base_url'] = base_url() . 'admin/user/index';
             $config['total_rows'] = $total_records;
@@ -68,7 +68,7 @@ class User extends CI_Controller{
 	}
 	function hapus(){
 		$id_user= $this->uri->segment(4);
-		$this->MA_user->hapus_user($id_user);
+		$this->User_admin->hapus_user($id_user);
 		redirect('admin/admin-user');
 	}
 } 
